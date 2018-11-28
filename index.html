@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Our Project</title>  
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+
+    </head>
+    <body>
+        <script>
+            $.ajax({
+                url: "https://api.weather.gov/gridpoints/GJT/167,100/forecast",
+                method: "GET"
+            }) .then(function(response){
+                console.log(response);
+                console.log(response.properties.periods[0]);
+                console.log("Short Forecast: " + response.properties.periods[0].shortForecast);
+                console.log("Temperature: " + response.properties.periods[0].temperature + " F");
+                console.log("Wind Speed: " + response.properties.periods[0].windSpeed);
+                console.log("Detailed Forecast: " + response.properties.periods[0].detailedForecast);
+
+            });
+        </script>
+</body>
+</html>
