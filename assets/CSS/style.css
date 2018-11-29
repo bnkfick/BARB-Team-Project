@@ -43,6 +43,26 @@ i:hover {
     visibility: collapse;
 }
 
+th {
+    padding: 0;
+    margin: 0;
+}
+.th-sm{
+    width: 5em;
+}
+
+.th-md {
+    width: 10em;
+}
+
+.th-lg {
+    width: 15em;
+}
+
+.th-xl {
+    width: 20em;
+}
+
 .fa-circle {
     color: green;
 }
