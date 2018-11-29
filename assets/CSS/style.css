@@ -9,6 +9,7 @@ body {
     background-repeat: no-repeat;
     /* background-position: center; */
     background-size: cover;
+    text-align: center
 }
 
 section {
@@ -43,10 +44,14 @@ i:hover {
     visibility: collapse;
 }
 
-th {
+.thead-green {
+    background-color: rgba(2, 85, 2, 0.5);
+}
+
+/* th {
     padding: 0;
     margin: 0;
-}
+} */
 .th-sm{
     width: 5em;
 }
