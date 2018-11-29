@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice HTML</title>
+    <title>14'er Friend</title>
     <link rel="icon" type="image/jpg" href="https://www.scgis.org/images/chapters/CO_Symbol.jpg" />
 
     <!-- Reset CSS -->
@@ -29,63 +29,62 @@
 
 
     <section>
-        <div>
+        <div class="container">
             <table class="table table-striped table-light">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Favorites</th>
-                        <th scope="col">Mountain Name</th>
-                        <th scope="col">Windspeed</th>
-                        <th scope="col">Temperature</th>
-                        <th scope="col">Distance</th>
-                        <th scope="col">Lattitude</th>
-                        <th scope="col">Longitude</th>
-                        <th scope="col">Elevation</th>
+                        <th scope="col">Favorite</th>
                         <th scope="col">Rank</th>
-                        <!-- <th scope="col">Mountain Range</th> -->
-                        <th scope="col">Route Name</th>
-                        <th scope="col">Route Mileage</th>
-                        <th scope="col">Route Gain (ft.)</th>
-                        <th scope="col">Route Difficulty</th>
-                        <!-- <th scope="col">Route Exposure</th> -->
-
+                        <th scope="col">Mountain</th>
+                        <th scope="col">Elevation</th>
+                        <th scope="col">Wind (mph)</th>
+                        <!--mph-->
+                        <th scope="col">Temp (F)</th>
+                        <!--Air temp at 14,000ft-->
+                        <th scope="col">Dist (Mi)</th>
+                        <!--Distance from User-->
+                        <th scope="col">Directions</th>
+                        <!--Google Link-->
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <!--turn background color of entire row green, yellow, or red depending on conditional params-->
                         <th id="favorite" scope="row"><i class="far fa-heart"></i></th>
-                        <td id="mtn-name">name</td>
-                        <td id="windspeed">wind</td>
-                        <td id="temp">temp</td>
-                        <td id="distance">dist</td>
-                        <td id="lattitude">lat</td>
-                        <td id="longitude">long</td>
-                        <td id="elevation">ele</td>
-                        <td id="rank">rank</td>
-                        <!-- <td id="mountain-range">range</td> -->
-                        <td id="route-name">rt name</td>
-                        <td id="route-mileage">rt mileage</td>
-                        <td id="route-gain">rt gain</td>
-                        <td id="route-difficulty">difficulty</td>
-                        <!-- <td id="route-exposure">exposure</td> -->
+                        <td id="rank">10</td>
+                        <td id="mtn-name">Long's Peak</td>
+                        <td id="elevation">14,000</td>
+                        <td id="windspeed">60</td>
+                        <td id="temp">10</td>
+                        <td id="distance">180</td>
+                        <td id="map">Link</td>
+                        <td id="expand" data-toggle="collapse" data-target="#route-info"><i class="fas fa-plus-square"></i></td>
                     </tr>
-                    <tr>
-                        <th id="favorite" scope="row"><i class="fas fa-heart"></i></th>
-                        <td id="mtn-name">name</td>
-                        <td id="windspeed">wind</td>
-                        <td id="temp">temp</td>
-                        <td id="distance">dist</td>
-                        <td id="lattitude">lat</td>
-                        <td id="longitude">long</td>
-                        <td id="elevation">ele</td>
-                        <td id="rank">rank</td>
-                        <!-- <td id="mountain-range">range</td> -->
-                        <td id="route-name">rt name</td>
-                        <td id="route-mileage">rt mileage</td>
-                        <td id="route-gain">rt gain</td>
-                        <td id="route-difficulty">difficulty</td>
-                        <!-- <td id="route-exposure">exposure</td> -->
-                    </tr>
+                    <thead class="thead-dark">
+                        <tr id="route-info">
+                            <th scope="col">Route Name</th>
+                            <th scope="col">Mileage</th>
+                            <th scope="col">Gain (ft.)</th>
+                            <th scope="col">Difficulty</th>
+                            <th scope="col">Exposure</th>
+                            <th scope="col">Route Map</th>
+                        </tr>
+                    </thead>
+                        <tr id="route-info">
+                            <td id="route-name">rt name 1</td>
+                            <td id="route-mileage">12</td>
+                            <td id="route-gain">3500</td>
+                            <td id="route-difficulty">2</td>
+                            <td id="route-exposure">3</td>
+                        </tr>
+                        <tr id="route-info">
+                            <td id="route-name">rt name 2</td>
+                            <td id="route-mileage">6</td>
+                            <td id="route-gain">6500</td>
+                            <td id="route-difficulty">1</td>
+                            <td id="route-exposure">1</td>
+                        </tr>
                 </tbody>
             </table>
         </div>
