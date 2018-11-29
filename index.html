@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>14'er Friend</title>
+    <title>14'er Hub</title>
     <link rel="icon" type="image/jpg" href="https://www.scgis.org/images/chapters/CO_Symbol.jpg" />
 
     <!-- Reset CSS -->
@@ -30,7 +30,7 @@
 
     <section>
         <div class="container">
-            <div class="accordion" id="accordionExample">
+            <div class="accordion" id="master-table">
                 <!--Start Card 1-->    
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -50,7 +50,7 @@
                             </thead>
                             <tbody>
                                 <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th id="favorite" scope="row"><i class="far fa-heart fa-2x"></i></th>
+                                    <th id="heart"><i id="favorite-1" value="false" class="far fa-heart fa-2x"></i></th>
                                     <td id="rank">10</td>
                                     <td id="mtn-name">Long's Peak</td>
                                     <td id="elevation">14,000</td>
@@ -64,11 +64,11 @@
                         </table><!--End #mountain-table-->
                     </div>
                 
-                    <div id="collapseOne" class="collapse" data-parent="#accordionExample">
+                    <div id="collapseOne" class="collapse" data-parent="#master-table">
                         <div class="card-body">
                             <!-- Routes sub-Table -->
                             <table  class="table table-striped table-light">      
-                                <thead class="thead-dark">
+                                <thead class="thead-green">
                                     <tr>
                                         <th class="th-xl">Route Name</th>
                                         <th class="th-md">Mileage</th>
@@ -136,7 +136,7 @@
                             </thead>
                             <tbody>
                                 <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th id="favorite" scope="row"><i class="far fa-heart fa-2x"></i></th>
+                                    <th><i id="favorite-2" value="false" class="far fa-heart fa-2x"></i></th>
                                     <td id="rank">3</td>
                                     <td id="mtn-name">Mt. Elbert</td>
                                     <td id="elevation">14,000</td>
@@ -150,18 +150,18 @@
                         </table><!--End #mountain-table-->
                     </div>
                         
-                    <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                    <div id="collapseTwo" class="collapse" data-parent="#master-table">
                         <div class="card-body">
                             <!-- Routes sub-Table -->
                             <table  class="table table-striped table-light">      
-                                <thead class="thead-dark">
+                                <thead class="thead-green">
                                     <tr>
-                                        <th>Route Name</th>
-                                        <th>Mileage</th>
-                                        <th>Gain (ft.)</th>
-                                        <th>Difficulty</th>
-                                        <th>Exposure</th>
-                                        <th>Route Description</th>
+                                        <th class="th-xl">Route Name</th>
+                                        <th class="th-md">Mileage</th>
+                                        <th class="th-md">Gain (ft.)</th>
+                                        <th class="th-md">Difficulty</th>
+                                        <th class="th-lg">Exposure</th>
+                                        <th class="th-md">Route Beta</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -222,9 +222,9 @@
                             </thead>
                             <tbody>
                                 <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th id="favorite" scope="row"><i class="far fa-heart fa-2x"></i></th>
-                                    <td id="rank">3</td>
-                                    <td id="mtn-name">Mt. Elbert</td>
+                                    <th><i id="favorite-3" value="false" class="far fa-heart fa-2x"></i></th>
+                                    <td id="rank">5</td>
+                                    <td id="mtn-name">Capitol Peak</td>
                                     <td id="elevation">14,000</td>
                                     <td id="windspeed">60mph</td>
                                     <td id="temp">10F</td>
@@ -236,18 +236,18 @@
                         </table><!--End #mountain-table-->
                     </div>
                         
-                    <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                    <div id="collapseThree" class="collapse" data-parent="#maser-table">
                         <div class="card-body">
                             <!-- Routes sub-Table -->
                             <table  class="table table-striped table-light">      
-                                <thead class="thead-dark">
+                                <thead class="thead-green">
                                     <tr>
-                                        <th>Route Name</th>
-                                        <th>Mileage</th>
-                                        <th>Gain (ft.)</th>
-                                        <th>Difficulty</th>
-                                        <th>Exposure</th>
-                                        <th>Route Description</th>
+                                        <th class="th-xl">Route Name</th>
+                                        <th class="th-md">Mileage</th>
+                                        <th class="th-md">Gain (ft.)</th>
+                                        <th class="th-md">Difficulty</th>
+                                        <th class="th-lg">Exposure</th>
+                                        <th class="th-md">Route Beta</th>
                                     </tr>
                                 </thead>
                                 <tbody>
