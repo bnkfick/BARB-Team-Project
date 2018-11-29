@@ -1,0 +1,76 @@
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    background-image: url("https://cdn2.outdoorphotographer.com/contests/496458/Bill_Tuttle_Maroon-Bells-and-Maroon-Lake.jpg");
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+}
+
+section {
+    margin: 5em 0;
+}
+
+.container {
+    background-color: rgba(0, 0, 255, 0);
+}
+
+i:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.card {
+    background-color: rgba(0, 0, 255, 0);
+}
+.card-header {
+    padding: 0;
+}
+.card-body {
+    padding: 0;
+}
+
+.table {
+    margin: 0;
+    padding: 0;
+}
+
+.thead-hide {
+    visibility: collapse;
+}
+
+th {
+    padding: 0;
+    margin: 0;
+}
+.th-sm{
+    width: 5em;
+}
+
+.th-md {
+    width: 10em;
+}
+
+.th-lg {
+    width: 15em;
+}
+
+.th-xl {
+    width: 20em;
+}
+
+.fa-circle {
+    color: green;
+}
+
+.fa-square {
+    color: blue;
+}
+
+.fa-exclamation-triangle {
+    color: black
+}
