@@ -24,7 +24,8 @@
     //  Clicking on a favorite Mountain Icon
     //  Will add/remove the associated mountain to the user favorites
     //=================================================================//
-    $("#master-table").on("click", ".favorite", function () {
+    $(".container").on("click", ".favorite", function () {
+        console.log("hello=================================");
         var mtnid = $(this).attr("id");
         const auth = firebase.auth();
         var currentUserId = auth.currentUser.uid;
