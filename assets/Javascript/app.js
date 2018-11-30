@@ -1,3 +1,4 @@
+$("document").ready(function(){
 
 var mapsInfo = [{
     peakName: "Mount Elbert",
@@ -55,13 +56,12 @@ var mapsInfo = [{
     },  
     
 ];
-    
+   
 
 var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
 var meters = 0;
 var distance;
 
-$("document").ready(function(){
     
   //Render MountainArray to HTML
   for(var i = 0; i < mapsInfo.length; i++){
@@ -95,48 +95,47 @@ $("document").ready(function(){
         });
         
     };
-  
-  
-  
-    //Toggle Favorite Heart Outline to Solid
-    $("#master-table").on("click", "#favorite", function () {
-            
-            var favorite = $("#favorite")
 
-            if (favorite.val() === "false") {
-                favorite.removeClass("far").addClass("fas").val("true");
-            } else {
-                favorite.removeClass("fas").addClass("far").val("false");
-            }
-    });
+  
+  
+  
+    // //Toggle Favorite Heart Outline to Solid
+    // $("#master-table").on("click", "#favorite", function () {
+            
+    //         var favorite = $("#favorite")
+
+
+    //         if (favorite.val() === "false") {
+    //             favorite.removeClass("far").addClass("fas").val("true");
+    //         } else {
+    //             favorite.removeClass("fas").addClass("far").val("false");
+    //         }
+    // })
     
     //Toggle Routes View
-    $("#show-routes-table").hide();
-    $("#show-route-beta").hide();
-
-    $(".container").on("click", "#plus-icon", function () {
-        if ($("#plus-icon").hasClass("fa-plus-square")) {
-            $("#plus-icon").removeClass("fa-plus-square")
+    $("#routes-table").hide();
+    
+    $(".container").on("click", "#mtn-1 #plus-btn", function () {
+        if ($(this).hasClass("fa-plus-square")) {
+            $(this).removeClass("fa-plus-square")
         } else {
-            $("#plus-icon").addClass("fa-plus-square");
+            $(this).addClass("fa-plus-square");
         }
-        $("#show-routes-table").slideToggle(500, "swing", function () {
-            
+        $("#routes-table").slideToggle(500, "swing", function () { 
         });
-
     });
 
     //Toggle Route Beta View
-    $(".container").on("click", "#route-beta-btn", function () {
-        if ($("#route-beta-btn").hasClass("fa-map-marked-alt")) {
-            $("#route-beta-btn").removeClass("fa-map-marked-alt")
-        } else {
-            $("#route-beta-btn").addClass("fa-map-marked-alt");
-        }
-        $("#show-route-beta").slideToggle(500, "swing", function () {
-            
-        });
+    $("#route-beta").hide();
 
+    $(".container").on("click", "#beta-btn", function () {
+        if ($(this).hasClass("fa-map-marked-alt")) {
+            $(this).removeClass("fa-map-marked-alt")
+        } else {
+            $(this).addClass("fa-map-marked-alt");
+        }
+        $("#route-beta").slideToggle(500, "swing", function () {  
+        });
     });
 
 });
