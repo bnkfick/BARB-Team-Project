@@ -54,11 +54,6 @@ var mapsInfo = [{
     trailHeadLocations: ["39.067863, -106.504948"]
     },  
     
-<<<<<<< HEAD
-
-
-});
-=======
 ];
     
     
@@ -120,4 +115,3 @@ $("document").ready(function(){
 
 });
     
->>>>>>> f25db0ec0b089a09ea96d22462ea3531e9f6c919

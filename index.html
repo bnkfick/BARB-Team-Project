@@ -31,6 +31,32 @@
 
     <section>
         <div class="container">
+
+                <div class="col-md-12">
+                        <!-- Edit and Delete Trains  -->
+                        <div class="card mb-4">
+                          <div class="card-header">Login</div>
+                          <div class="card-body">
+                            <div class="errorDiv"></div>
+                            <input id="txtEmail" type="email" placeholder="Email">
+                            <input id="txtPassword" type="password" placeholder="Password">
+                
+                            <button id="btnLogin" class="btn btn-action">
+                              Log In
+                            </button>
+                            <button id="btnSignUp" class="btn btn-secondary">
+                              Sign Up
+                            </button>
+                            <button id="btnLogout" class="btn btn-action invisible">
+                              Log Out
+                            </button>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+
+                    
             <table class="table table-striped table-light">
                 <thead class="thead-dark">
                     <tr>
@@ -177,6 +203,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
     <!-- Custom JS -->
+    <script type="text/javascript" src="assets/javascript/firebaseLogin.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
     <script type="text/javascript" src="assets/javascript/weather.js"></script>
 </body>
