@@ -86,20 +86,24 @@ $("document").ready(function(){
     // })
     
     //Toggle Routes View
-    $("#routes-table").hide();
+    $(".routes-table").hide();
     
-    $(".container").on("click", "#mtn-1 #plus-btn", function () {
+    $(".container").on("click", "#plus-btn", function () {
         if ($(this).hasClass("fa-plus-square")) {
             $(this).removeClass("fa-plus-square")
         } else {
             $(this).addClass("fa-plus-square");
         }
-        $("#routes-table").slideToggle(500, "swing", function () { 
+
+        var mtnID = $(this).parent().parent().parent().parent().attr("id")
+        console.log(mtnID);
+
+        $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
         });
     });
 
     //Toggle Route Beta View
-    $("#route-beta").hide();
+    $(".route-beta").hide();
 
     $(".container").on("click", "#beta-btn", function () {
         if ($(this).hasClass("fa-map-marked-alt")) {
@@ -107,7 +111,10 @@ $("document").ready(function(){
         } else {
             $(this).addClass("fa-map-marked-alt");
         }
-        $("#route-beta").slideToggle(500, "swing", function () {  
+        var routeID = $(this).parent().parent().attr("id");
+        console.log(routeID)
+        
+        $("#"+routeID + "-beta").slideToggle(500, "swing", function () {  
         });
     });
 
