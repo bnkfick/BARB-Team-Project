@@ -121,7 +121,6 @@
                     //console.log("KEY: " + key);
                     console.log(childData.name);
                     for (var i = 0; i < favMtnIcons.length; i++ ) {
-                        console.log(favMtnIcons[i]);
                         var mtnId = $(favMtnIcons[i]).attr("id");
                         if ( mtnId === childData.name ) {
                             $(favMtnIcons[i]).removeClass("far").addClass("fas").attr("value", "true")
