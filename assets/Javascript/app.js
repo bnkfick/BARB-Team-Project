@@ -154,43 +154,45 @@ var distance;
         });
     });
 
-});
-
-
-var times = [];
-
-$.ajax({
-    url: mapsInfo[0].weatherLink[0],
-    method: "GET"
-
-}).then(function (response) {
-  
-        // var startTime=response.properties.periods[0].startTime;
-        // var days=response.properties.periods[0].number;
-        // var temperature=response.properties.periods[0].temperature;
-        // var windSpeed=response.properties.periods[0].windSpeed;
-        // var windDirection=response.properties.periods[0].windDirection;
-        // var shortForecast=response.properties.periods[0].shortForecast;
-        // var detailedForecast=response.properties.periods[0].detailedForecast;
-
-    // console.log(response);
+    var times = [];
+    $.ajax({
+        url: mapsInfo[0].weatherLink[0],
+        method: "GET"
     
-    for (var i = 0; i < 6; i++) { 
-        // console.log(response.properties.periods[i]);
-
-        times.push({
-            number: response.properties.periods[i].number,
-            startTime: response.properties.periods[i].startTime,
-            temperature: response.properties.periods[i].temperature,
-            windSpeed: response.properties.periods[i].windSpeed,
-            windDirection: response.properties.periods[i].windDirection,
-            shortForecast: response.properties.periods[i].shortForecast,
-            detailedForecast:response.properties.periods[i].detailedForecast,
-        });
+    }).then(function (response) {
+      
+            // var startTime=response.properties.periods[0].startTime;
+            // var days=response.properties.periods[0].number;
+            // var temperature=response.properties.periods[0].temperature;
+            // var windSpeed=response.properties.periods[0].windSpeed;
+            // var windDirection=response.properties.periods[0].windDirection;
+            // var shortForecast=response.properties.periods[0].shortForecast;
+            // var detailedForecast=response.properties.periods[0].detailedForecast;
+    
+        // console.log(response);
         
-    }
-
-    console.log(times);
+        for (var i = 0; i < 6; i++) { 
+            // console.log(response.properties.periods[i]);
     
+            times.push({
+                number: response.properties.periods[i].number,
+                startTime: response.properties.periods[i].startTime,
+                temperature: response.properties.periods[i].temperature,
+                windSpeed: response.properties.periods[i].windSpeed,
+                windDirection: response.properties.periods[i].windDirection,
+                shortForecast: response.properties.periods[i].shortForecast,
+                detailedForecast:response.properties.periods[i].detailedForecast,
+            });
+            
+        }
+    
+        console.log(times);
+        
+    });
+
+
 });
+
+
+
 
