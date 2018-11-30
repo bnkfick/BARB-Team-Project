@@ -1,3 +1,4 @@
+
 var mapsInfo = [{
     peakName: "Mount Elbert",
     trailNames: ["Mount Elbert NE Ridge"],
@@ -54,16 +55,33 @@ var mapsInfo = [{
     },  
     
 ];
+    
+    
+    
+   
 
 var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
 
 
 $("document").ready(function(){
-    for(var i = 0; i < mapsInfo.length; i++){
+    
+  
+  for(var i = 0; i < mapsInfo.length; i++){
         var trailMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", mapsInfo[i].trailMapEmbeds[0]);
         var trailHead = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + mapsInfo[i].trailHeadLocations[0]); 
         $("#map").append("<p>", mapsInfo[i].peakName).append("<p>", mapsInfo[i].trailNames[0]).append(trailMap);
         $("#map").append(trailHead);
     }
+  
+  $("#master-table").on("click", "#favorite", function () {
+            
+            var favorite = $("#favorite")
+
+            if (favorite.val() === "false") {
+                favorite.removeClass("far").addClass("fas").val("true");
+            } else {
+                favorite.removeClass("fas").addClass("far").val("false");
+            }
+        })
 });
     
