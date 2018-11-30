@@ -1,3 +1,4 @@
+$("document").ready(function(){
 
 var mapsInfo = [{
     peakName: "Mount Elbert",
@@ -38,38 +39,38 @@ var mapsInfo = [{
     peakName: "Pikes Peak",
     trailNames: ["East Slope"],
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m27!1m12!1m3!1d36252.16433403112!2d-105.02240677139945!3d38.84783772183579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m12!3e2!4m5!1s0x871350abde6e062d%3A0x3ef5195833a8b8a8!2s2+Hydro+St%2C+Manitou+Springs%2C+CO+80829!3m2!1d38.8552651!2d-104.93300789999999!4m4!2s38.840925%2C+-105.042035!3m2!1d38.840925!2d-105.042035!5e1!3m2!1sen!2sus!4v1543538670897"],
-    trailHeadLocations: ["38.855881, -104.933905"],
-    weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,105/forecast"]
+    trailHeadLocations: ["38.855881,-104.933905"],
+     weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,105/forecast"]
     },  
     {
     peakName: "Mount Bierstadt",
     trailNames: ["East Ridge"],
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d17935.900335665396!2d-105.70703674613965!3d39.58832833605607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e2!4m3!3m2!1d39.596482!2d-105.71010199999999!4m5!1s0x876ba9eba4cd7329%3A0x6910ea09d97f633b!2sMount+Bierstadt%2C+Colorado!3m2!1d39.5827653!2d-105.6686151!5e1!3m2!1sen!2sus!4v1543538960061"],
-    trailHeadLocations: ["39.596482, -105.710102"],
+    trailHeadLocations: ["39.596482,-105.710102"],
     weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"]
     },
     {
     peakName: "Mount Massive",
     trailNames: ["East Slopes"],
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d33344.55411437189!2d-106.48585175559383!3d39.17586081029377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876a98bdd7d3ec87%3A0x724c591f84718c26!2sMount+Massive+Trailhead+Parking+Lot%2C+Leadville%2C+CO+80461!3m2!1d39.1515051!2d-106.4194055!4m5!1s0x876a9eed65169f67%3A0x5f551784f65ce6d3!2sMt+Massive%2C+Colorado+80461!3m2!1d39.1872118!2d-106.47530599999999!5e1!3m2!1sen!2sus!4v1543530509118"],
-    trailHeadLocations: ["39.151498, -106.419441"],
+    trailHeadLocations: ["39.151498,-106.419441"],
     weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,106/forecast"]
-    },  
+    },
     {
     peakName: "La Plata Peak",
     trailNames: ["North West Ridge"],
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d36149.66248538486!2d-106.52441361925378!3d39.04854736397552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876aa0e9541da713%3A0x812000a012d4416d!2sLa+Plata+Gulch+Trailhead%2C+CO-82%2C+Buena+Vista%2C+CO+81211!3m2!1d39.067932!2d-106.5050583!4m5!1s0x876aa6c2ff3836a7%3A0x7cf4b8085e37a3d3!2sLa+Plata+Peak%2C+Colorado!3m2!1d39.0294368!2d-106.4730831!5e1!3m2!1sen!2sus!4v1543530770420"],
-    trailHeadLocations: ["39.067863, -106.504948"],
+    trailHeadLocations: ["39.067863,-106.504948"],
     weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,107/forecast"]
     },  
     
 ];
-    
-    
+   
+
 var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
+var meters = 0;
+var distance;
 
-
-$("document").ready(function(){
     
   //Render MountainArray to HTML
   for(var i = 0; i < mapsInfo.length; i++){
@@ -77,52 +78,77 @@ $("document").ready(function(){
         var trailHead = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + mapsInfo[i].trailHeadLocations[0]); 
         $("#route-map").append("<p>", mapsInfo[i].peakName).append("<p>", mapsInfo[i].trailNames[0]).append(trailMap);
         $("#route-map").append(trailHead);
-    }
-  
-  
-  
-    //Toggle Favorite Heart Outline to Solid
-    $("#master-table").on("click", "#favorite", function () {
-            
-            var favorite = $("#favorite")
-
-            if (favorite.val() === "false") {
-                favorite.removeClass("far").addClass("fas").val("true");
+        $.ajax({
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination="+ mapsInfo[i].trailHeadLocations[0]+"&key="+aK,
+            method: "GET"
+        }) .then(function(response){
+            console.log(response);
+            //For now if more than one route is listed we will simply go with the first. It will make the logic to write the loop more manageable.
+            meters = 0;
+            if(response.status === "ZERO_RESULTS"){
+                distance = "Road Closed for Winter";
             } else {
-                favorite.removeClass("fas").addClass("far").val("false");
-            }
-    })
+            for(n = 0; n < response.routes[0].legs.length; n++);
+            meters += parseFloat(response.routes[0].legs[0].distance.value);
+            // console.log(meters);
+            };
+            if(meters !== 0){
+                distance = Math.round((meters * 3.281) / 5280);
+                console.log(distance + " miles");
+                $("#route-map").append("<p>", "Distance: " + distance + " Miles.")
+            } else {
+                console.log(distance);
+                $("#route-map").append(distance);
+            };
+        
+        });
+        
+    };
+
+  
+  
+  
+    // //Toggle Favorite Heart Outline to Solid
+    // $("#master-table").on("click", "#favorite", function () {
+            
+    //         var favorite = $("#favorite")
+
+
+    //         if (favorite.val() === "false") {
+    //             favorite.removeClass("far").addClass("fas").val("true");
+    //         } else {
+    //             favorite.removeClass("fas").addClass("far").val("false");
+    //         }
+    // })
     
     //Toggle Routes View
-    $("#show-routes-table").hide();
-    $("#show-route-beta").hide();
-
-    $(".container").on("click", "#plus-icon", function () {
-        if ($("#plus-icon").hasClass("fa-plus-square")) {
-            $("#plus-icon").removeClass("fa-plus-square")
+    $("#routes-table").hide();
+    
+    $(".container").on("click", "#mtn-1 #plus-btn", function () {
+        if ($(this).hasClass("fa-plus-square")) {
+            $(this).removeClass("fa-plus-square")
         } else {
-            $("#plus-icon").addClass("fa-plus-square");
+            $(this).addClass("fa-plus-square");
         }
-        $("#show-routes-table").slideToggle(500, "swing", function () {
-            
+        $("#routes-table").slideToggle(500, "swing", function () { 
         });
-
     });
 
     //Toggle Route Beta View
-    $(".container").on("click", "#route-beta-btn", function () {
-        if ($("#route-beta-btn").hasClass("fa-map-marked-alt")) {
-            $("#route-beta-btn").removeClass("fa-map-marked-alt")
-        } else {
-            $("#route-beta-btn").addClass("fa-map-marked-alt");
-        }
-        $("#show-route-beta").slideToggle(500, "swing", function () {
-            
-        });
+    $("#route-beta").hide();
 
+    $(".container").on("click", "#beta-btn", function () {
+        if ($(this).hasClass("fa-map-marked-alt")) {
+            $(this).removeClass("fa-map-marked-alt")
+        } else {
+            $(this).addClass("fa-map-marked-alt");
+        }
+        $("#route-beta").slideToggle(500, "swing", function () {  
+        });
     });
 
 });
+
 
 var times = [];
 
@@ -160,3 +186,4 @@ $.ajax({
     console.log(times);
     
 });
+
