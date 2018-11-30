@@ -105,7 +105,7 @@ $("document").ready(function(){
         if ($("#route-beta-btn").hasClass("fa-map-marked-alt")) {
             $("#route-beta-btn").removeClass("fa-map-marked-alt")
         } else {
-            $("#route-beta-btn").addClass("fa-map-marked");
+            $("#route-beta-btn").addClass("fa-map-marked-alt");
         }
         $("#show-route-beta").slideToggle(500, "swing", function () {
             
