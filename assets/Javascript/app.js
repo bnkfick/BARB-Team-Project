@@ -101,13 +101,13 @@ $("document").ready(function(){
     });
 
     //Toggle Route Beta View
-    $(".container").on("click", "#route-beta-btn", function () {
-        if ($("#route-beta-btn").hasClass("fa-map-marked-alt")) {
-            $("#route-beta-btn").removeClass("fa-map-marked-alt")
+    $(".container").on("click", "#route-1-beta-btn", function () {
+        if ($("#route-1-beta-btn").hasClass("fa-map-marked-alt")) {
+            $("#route-1-beta-btn").removeClass("fa-map-marked-alt")
         } else {
-            $("#route-beta-btn").addClass("fa-map-marked-alt");
+            $("#route-1-beta-btn").addClass("fa-map-marked-alt");
         }
-        $("#show-route-beta").slideToggle(500, "swing", function () {
+        $("#route-1-beta").slideToggle(500, "swing", function () {
             
         });
 
