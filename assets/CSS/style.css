@@ -68,6 +68,10 @@ i:hover {
     width: 20em;
 }
 
+#td-route-beta {
+    padding: none !important;
+}
+
 .fa-circle {
     color: green;
 }
