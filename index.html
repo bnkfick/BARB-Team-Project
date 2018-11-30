@@ -34,7 +34,7 @@
                 <!--Start Card 1-->    
                 <div class="card">
                     <div class="card-header" id="headingOne">
-                        <table id="mountain-table-1" class="table table-striped table-light">
+                        <table id="mtn-table-1" class="table table-striped table-light">
                             <thead class="thead-dark">
                                 <tr>
                                     <th class="th-sm">Favorite</th>
@@ -49,7 +49,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
+                                <tr id="mtn-1"><!--turn background color of entire row green, yellow, or red depending on conditional params-->
                                     <th id="heart"><i id="favorite-1" value="false" class="far fa-heart fa-2x"></i></th>
                                     <td id="rank">10</td>
                                     <td id="mtn-name">Long's Peak</td>
@@ -62,7 +62,7 @@
                                 </tr>
                             </tbody>
                         </table><!--End #mountain-table-->
-                    </div>
+                    </div><!--End Card Header-->
                 
                     <div id="collapseOne" class="collapse" data-parent="#master-table">
                         <div class="card-body">
@@ -79,7 +79,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr id="route-1">
                                         <td id="route-name">easy route</td>
                                         <td id="route-mileage">12</td>
                                         <td id="route-gain">3500</td>
@@ -87,7 +87,21 @@
                                         <td id="route-exposure">Class 1</td>
                                         <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
                                     </tr>
-                                    <tr>
+                                    <tr id="route-1">
+                                        <table>
+                                            <tr>
+                                                <td class="route-map">
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1314.6610679794103!2d-105.6465642314247!3d39.577243854662406!2m3!1f0!2f38.516976653257345!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x876ba9ca85fb4895%3A0xefa49d55b6cbb1b1!2sMt+Evans!5e1!3m2!1sen!2sus!4v1543536884168" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                </td>
+                                                <td class="desciption">
+                                                    <p>The standard Lorem Ipsum passage, used since the 1500s
+                                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </tr>    
+                                    <tr id="route-2">
                                         <td id="route-name">harder route</td>
                                         <td id="route-mileage">6</td>
                                         <td id="route-gain">6500</td>
@@ -95,20 +109,12 @@
                                         <td id="route-exposure">Class 2</td>
                                         <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
                                     </tr>
-                                    <tr>
+                                    <tr id="route-3">
                                         <td id="route-name">hard route</td>
                                         <td id="route-mileage">6</td>
                                         <td id="route-gain">6500</td>
                                         <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i></td>
                                         <td id="route-exposure"> Class 3</td>
-                                        <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td id="route-name">hardest route</td>
-                                        <td id="route-mileage">6</td>
-                                        <td id="route-gain">6500</td>
-                                        <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i><i class="fas fa-mountain fa-2x"></i></td>
-                                        <td id="route-exposure">Class 4</td>
                                         <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
                                     </tr>
                                 </tbody>
@@ -203,96 +209,207 @@
                     </div><!--End #collapseTwo-->
                 </div><!--End Card 2-->
                 
-                <!--Start Card 3-->
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <table id="mountain-table-1" class="table table-striped table-light">
-                            <thead class="thead-dark thead-hide">
-                                <tr>
-                                    <th class="th-sm">Favorite</th>
-                                    <th class="th-sm">Rank</th>
-                                    <th class="th-lg">Mountain</th>
-                                    <th class="th-lg">Elevation</th>
-                                    <th class="th-md">Wind</th><!--(Weather API) mph -->
-                                    <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
-                                    <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
-                                    <th class="th-lg">Directions</th><!--Google Link-->
-                                    <th class="th-sm"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th><i id="favorite-3" value="false" class="far fa-heart fa-2x"></i></th>
-                                    <td id="rank">5</td>
-                                    <td id="mtn-name">Capitol Peak</td>
-                                    <td id="elevation">14,000</td>
-                                    <td id="windspeed">60mph</td>
-                                    <td id="temp">10F</td>
-                                    <td id="distance">180mi</td>
-                                    <td id="map"><a href=#>Link</a></td><!--.attr(data-target, #route-table-i-->
-                                    <td><i role="button" data-toggle="collapse" data-target="#collapseThree" class="fas fa-plus-square fa-2x collapsed"></i></td>
-                                </tr>
-                            </tbody>
-                        </table><!--End #mountain-table-->
-                    </div>
-                        
-                    <div id="collapseThree" class="collapse" data-parent="#maser-table">
-                        <div class="card-body">
-                            <!-- Routes sub-Table -->
-                            <table  class="table table-striped table-light">      
-                                <thead class="thead-green">
-                                    <tr>
-                                        <th class="th-xl">Route Name</th>
-                                        <th class="th-md">Mileage</th>
-                                        <th class="th-md">Gain (ft.)</th>
-                                        <th class="th-md">Difficulty</th>
-                                        <th class="th-lg">Exposure</th>
-                                        <th class="th-md">Route Beta</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="route-name">easy route</td>
-                                        <td id="route-mileage">12</td>
-                                        <td id="route-gain">3500</td>
-                                        <td id="route-difficulty"><i class="fas fa-circle fa-2x"></i></td>
-                                        <td id="route-exposure">Class 1</td>
-                                        <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td id="route-name">harder route</td>
-                                        <td id="route-mileage">6</td>
-                                        <td id="route-gain">6500</td>
-                                        <td id="route-difficulty"><i class="fas fa-square fa-2x"></i></td>
-                                        <td id="route-exposure">Class 2</td>
-                                        <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td id="route-name">hard route</td>
-                                        <td id="route-mileage">6</td>
-                                        <td id="route-gain">6500</td>
-                                        <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i></td>
-                                        <td id="route-exposure"> Class 3</td>
-                                        <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td id="route-name">hardest route</td>
-                                        <td id="route-mileage">6</td>
-                                        <td id="route-gain">6500</td>
-                                        <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i><i class="fas fa-mountain fa-2x"></i></td>
-                                        <td id="route-exposure">Class 4</td>
-                                        <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
-                                    </tr>
-                                </tbody>
-                            </table><!--End #route-table-->
-                        </div><!--End Card Body-->
-                    </div><!--End #collapseThree-->
-                </div><!--End Card 3-->
+            </div><!--End .accordian-->
         </div><!--End Container-->
 
 
+      
+
     </section>
 
+    <section>
+        <div class="container">
+            <table class="table table-striped table-light">
+                <thead class="thead-dark thead-hide">
+                    <tr>
+                        <th class="th-sm">Favorite</th>
+                        <th class="th-sm">Rank</th>
+                        <th class="th-lg">Mountain</th>
+                        <th class="th-lg">Elevation</th>
+                        <th class="th-md">Wind</th><!--(Weather API) mph -->
+                        <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
+                        <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
+                        <th class="th-lg">Directions</th><!--Google Link-->
+                        <th class="th-sm"></th>
+                    </tr>
+                </thead>
+            </table>
+            <table id="mtn-table-1" class="table table-striped table-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="th-sm">Favorite</th>
+                        <th class="th-sm">Rank</th>
+                        <th class="th-lg">Mountain</th>
+                        <th class="th-lg">Elevation</th>
+                        <th class="th-md">Wind</th><!--(Weather API) mph -->
+                        <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
+                        <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
+                        <th class="th-lg">Directions</th><!--Google Link-->
+                        <th class="th-sm"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="mtn-1"><!--turn background color of entire row green, yellow, or red depending on conditional params-->
+                        <th id="heart"><i id="favorite-1" value="false" class="far fa-heart fa-2x"></i></th>
+                        <td id="rank">10</td>
+                        <td id="mtn-name">Long's Peak</td>
+                        <td id="elevation">14,000</td>
+                        <td id="windspeed">60mph</td>
+                        <td id="temp">10F</td>
+                        <td id="distance">180mi</td>
+                        <td id="map"><a href=#>Link</a></td><!--.attr(data-target, #route-table-i-->
+                        <td ><i role="button" id="plus-icon" class="fas fa-plus-square fa-minus-square fa-2x"></i></td>
+                    </tr>
+                </tbody>
+            </table><!--End #mountain-table-->
+
+            <!-- Routes sub-Table -->
+            <div id="show-routes-table">
+                <table class="table table-striped table-light">      
+                    <thead class="thead-green">
+                        <tr>
+                            <th class="th-xl">Route Name</th>
+                            <th class="th-md">Mileage</th>
+                            <th class="th-md">Gain (ft.)</th>
+                            <th class="th-md">Difficulty</th>
+                            <th class="th-lg">Exposure</th>
+                            <th class="th-md">Route Beta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="route-1">
+                            <td id="route-name">easy route</td>
+                            <td id="route-mileage">12</td>
+                            <td id="route-gain">3500</td>
+                            <td id="route-difficulty"><i class="fas fa-circle fa-2x"></i></td>
+                            <td id="route-exposure">Class 1</td>
+                            <td id="route-description"><i id="route-beta-btn" class="fas fa-map-marked-alt fa-map-marked fa-2x"></i></td>
+                        </tr>
+                        <tr >
+                            <td id="td-route-beta" colspan="6">
+                                <div id="show-route-beta">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24597.817441012663!2d-105.66133819306746!3d39.58829863606427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876ba9ca85fb4895%3A0xefa49d55b6cbb1b1!2sMt+Evans!5e0!3m2!1sen!2sus!4v1543554572340" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
+                                    
+                            </td>
+                        </tr>
+                        <tr id="route-2">
+                            <td id="route-name">harder route</td>
+                            <td id="route-mileage">6</td>
+                            <td id="route-gain">6500</td>
+                            <td id="route-difficulty"><i class="fas fa-square fa-2x"></i></td>
+                            <td id="route-exposure">Class 2</td>
+                            <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
+                        </tr>
+                        <tr id="route-3">
+                            <td id="route-name">hard route</td>
+                            <td id="route-mileage">6</td>
+                            <td id="route-gain">6500</td>
+                            <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i></td>
+                            <td id="route-exposure"> Class 3</td>
+                            <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
+                        </tr>
+                    </tbody>
+                </table><!--End #route-table-->
+            </div>
+                    
+                        
+                                
+
+                    
+                    <!--Start Card 2-->
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <table id="mountain-table-1" class="table table-striped table-light">
+                                <thead class="thead-dark thead-hide">
+                                    <tr>
+                                        <th class="th-sm">Favorite</th>
+                                        <th class="th-sm">Rank</th>
+                                        <th class="th-lg">Mountain</th>
+                                        <th class="th-lg">Elevation</th>
+                                        <th class="th-md">Wind</th><!--(Weather API) mph -->
+                                        <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
+                                        <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
+                                        <th class="th-lg">Directions</th><!--Google Link-->
+                                        <th class="th-sm"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
+                                        <th><i id="favorite-2" value="false" class="far fa-heart fa-2x"></i></th>
+                                        <td id="rank">3</td>
+                                        <td id="mtn-name">Mt. Elbert</td>
+                                        <td id="elevation">14,000</td>
+                                        <td id="windspeed">60mph</td>
+                                        <td id="temp">10F</td>
+                                        <td id="distance">180mi</td>
+                                        <td id="map"><a href=#>Link</a></td><!--.attr(data-target, #route-table-i-->
+                                        <td><i role="button" data-toggle="collapse" data-target="#collapseTwo" class="fas fa-plus-square fa-2x collapsed"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table><!--End #mountain-table-->
+                        </div>
+                            
+                        <div id="collapseTwo" class="collapse" data-parent="#master-table">
+                            <div class="card-body">
+                                <!-- Routes sub-Table -->
+                                <table  class="table table-striped table-light">      
+                                    <thead class="thead-green">
+                                        <tr>
+                                            <th class="th-xl">Route Name</th>
+                                            <th class="th-md">Mileage</th>
+                                            <th class="th-md">Gain (ft.)</th>
+                                            <th class="th-md">Difficulty</th>
+                                            <th class="th-lg">Exposure</th>
+                                            <th class="th-md">Route Beta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="route-name">easy route</td>
+                                            <td id="route-mileage">12</td>
+                                            <td id="route-gain">3500</td>
+                                            <td id="route-difficulty"><i class="fas fa-circle fa-2x"></i></td>
+                                            <td id="route-exposure">Class 1</td>
+                                            <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="route-name">harder route</td>
+                                            <td id="route-mileage">6</td>
+                                            <td id="route-gain">6500</td>
+                                            <td id="route-difficulty"><i class="fas fa-square fa-2x"></i></td>
+                                            <td id="route-exposure">Class 2</td>
+                                            <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="route-name">hard route</td>
+                                            <td id="route-mileage">6</td>
+                                            <td id="route-gain">6500</td>
+                                            <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i></td>
+                                            <td id="route-exposure"> Class 3</td>
+                                            <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="route-name">hardest route</td>
+                                            <td id="route-mileage">6</td>
+                                            <td id="route-gain">6500</td>
+                                            <td id="route-difficulty"><i class="fas fa-mountain fa-2x"></i><i class="fas fa-mountain fa-2x"></i></td>
+                                            <td id="route-exposure">Class 4</td>
+                                            <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--End #route-table-->
+                            </div><!--End Card Body-->
+                        </div><!--End #collapseTwo-->
+                    </div><!--End Card 2-->
+                    
+                </div><!--End .accordian-->
+            </div><!--End Container-->
+    
+    
+          
+    
+        </section>
 
     <footer></footer>
 
@@ -304,6 +421,12 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    
+    <!-- jQuery UI -->
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
 
     <!-- AJAX -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

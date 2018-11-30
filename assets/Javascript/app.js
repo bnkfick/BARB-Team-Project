@@ -57,23 +57,23 @@ var mapsInfo = [{
 ];
     
     
-    
-   
-
 var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
 
 
 $("document").ready(function(){
     
-  
+  //Render MountainArray to HTML
   for(var i = 0; i < mapsInfo.length; i++){
         var trailMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", mapsInfo[i].trailMapEmbeds[0]);
         var trailHead = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + mapsInfo[i].trailHeadLocations[0]); 
-        $("#map").append("<p>", mapsInfo[i].peakName).append("<p>", mapsInfo[i].trailNames[0]).append(trailMap);
-        $("#map").append(trailHead);
+        $("#route-map").append("<p>", mapsInfo[i].peakName).append("<p>", mapsInfo[i].trailNames[0]).append(trailMap);
+        $("#route-map").append(trailHead);
     }
   
-  $("#master-table").on("click", "#favorite", function () {
+  
+  
+    //Toggle Favorite Heart Outline to Solid
+    $("#master-table").on("click", "#favorite", function () {
             
             var favorite = $("#favorite")
 
@@ -82,6 +82,36 @@ $("document").ready(function(){
             } else {
                 favorite.removeClass("fas").addClass("far").val("false");
             }
-        })
+    })
+    
+    //Toggle Routes View
+    $("#show-routes-table").hide();
+    $("#show-route-beta").hide();
+
+    $(".container").on("click", "#plus-icon", function () {
+        if ($("#plus-icon").hasClass("fa-plus-square")) {
+            $("#plus-icon").removeClass("fa-plus-square")
+        } else {
+            $("#plus-icon").addClass("fa-plus-square");
+        }
+        $("#show-routes-table").slideToggle(500, "swing", function () {
+            
+        });
+
+    });
+
+    //Toggle Route Beta View
+    $(".container").on("click", "#route-beta-btn", function () {
+        if ($("#route-beta-btn").hasClass("fa-map-marked-alt")) {
+            $("#route-beta-btn").removeClass("fa-map-marked-alt")
+        } else {
+            $("#route-beta-btn").addClass("fa-map-marked");
+        }
+        $("#show-route-beta").slideToggle(500, "swing", function () {
+            
+        });
+
+    });
+
 });
     
