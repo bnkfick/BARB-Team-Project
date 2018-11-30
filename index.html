@@ -7,6 +7,10 @@
     <title>14'er Hub</title>
     <link rel="icon" type="image/jpg" href="https://www.scgis.org/images/chapters/CO_Symbol.jpg" />
 
+    <!--FirebaseUI -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
     <!-- Reset CSS -->
     <!-- <link rel="stylesheet" type="text/css" href="reset.css"> -->
 
@@ -30,8 +34,33 @@
 
     <section>
         <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                          <!-- Edit and Delete Trains  -->
+                          <div class="card mb-4">
+                            <div class="card-header">Login</div>
+                            <div class="card-body">
+                              <div class="errorDiv"></div>
+                              <input id="txtEmail" type="email" placeholder="Email">
+                              <input id="txtPassword" type="password" placeholder="Password">
+                  
+                              <button id="btnLogin" class="btn btn-action">
+                                Log In
+                              </button>
+                              <button id="btnSignUp" class="btn btn-secondary">
+                                Sign Up
+                              </button>
+                              <button id="btnLogout" class="btn btn-action invisible">
+                                Log Out
+                              </button>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
             <div class="accordion" id="master-table">
-                <!--Start Card 1-->    
+                <!--Start Card 1-->
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <table id="mountain-table-1" class="table table-striped table-light">
@@ -41,33 +70,40 @@
                                     <th class="th-sm">Rank</th>
                                     <th class="th-lg">Mountain</th>
                                     <th class="th-lg">Elevation</th>
-                                    <th class="th-md">Wind</th><!--(Weather API) mph -->
-                                    <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
-                                    <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
-                                    <th class="th-lg">Directions</th><!--Google Link-->
+                                    <th class="th-md">Wind</th>
+                                    <!--(Weather API) mph -->
+                                    <th class="th-md">Temp</th>
+                                    <!--(Weather API) Air temp at 14,000ft-->
+                                    <th class="th-md">Dist</th>
+                                    <!--(Google Maps) Distance from User-->
+                                    <th class="th-lg">Directions</th>
+                                    <!--Google Link-->
                                     <th class="th-sm"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th id="heart"><i id="favorite-1" value="false" class="far fa-heart fa-2x"></i></th>
+                                <tr>
+                                    <!--turn background color of entire row green, yellow, or red depending on conditional params-->
+                                    <th id="heart"><i id="1" value="false" class="favorite far fa-heart fa-2x"></i></th>
                                     <td id="rank">10</td>
                                     <td id="mtn-name">Long's Peak</td>
                                     <td id="elevation">14,000</td>
                                     <td id="windspeed">60mph</td>
                                     <td id="temp">10F</td>
                                     <td id="distance">180mi</td>
-                                    <td id="map"><a href=#>Link</a></td><!--.attr(data-target, #route-table-i-->
+                                    <td id="map"><a href=#>Link</a></td>
+                                    <!--.attr(data-target, #route-table-i-->
                                     <td><i role="button" data-toggle="collapse" data-target="#collapseOne" class="fas fa-plus-square fa-2x"></i></td>
                                 </tr>
                             </tbody>
-                        </table><!--End #mountain-table-->
+                        </table>
+                        <!--End #mountain-table-->
                     </div>
-                
+
                     <div id="collapseOne" class="collapse" data-parent="#master-table">
                         <div class="card-body">
                             <!-- Routes sub-Table -->
-                            <table  class="table table-striped table-light">      
+                            <table class="table table-striped table-light">
                                 <thead class="thead-green">
                                     <tr>
                                         <th class="th-xl">Route Name</th>
@@ -112,11 +148,14 @@
                                         <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
                                     </tr>
                                 </tbody>
-                            </table><!--End #route-table-->
-                        </div><!--End Card Body-->
+                            </table>
+                            <!--End #route-table-->
+                        </div>
+                        <!--End Card Body-->
                     </div>
-                </div><!--End Whole Card 1-->
-                
+                </div>
+                <!--End Whole Card 1-->
+
                 <!--Start Card 2-->
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -127,33 +166,40 @@
                                     <th class="th-sm">Rank</th>
                                     <th class="th-lg">Mountain</th>
                                     <th class="th-lg">Elevation</th>
-                                    <th class="th-md">Wind</th><!--(Weather API) mph -->
-                                    <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
-                                    <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
-                                    <th class="th-lg">Directions</th><!--Google Link-->
+                                    <th class="th-md">Wind</th>
+                                    <!--(Weather API) mph -->
+                                    <th class="th-md">Temp</th>
+                                    <!--(Weather API) Air temp at 14,000ft-->
+                                    <th class="th-md">Dist</th>
+                                    <!--(Google Maps) Distance from User-->
+                                    <th class="th-lg">Directions</th>
+                                    <!--Google Link-->
                                     <th class="th-sm"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th><i id="favorite-2" value="false" class="far fa-heart fa-2x"></i></th>
+                                <tr>
+                                    <!--turn background color of entire row green, yellow, or red depending on conditional params-->
+                                    <th><i id="2" value="false" class="favorite far fa-heart fa-2x"></i></th>
                                     <td id="rank">3</td>
                                     <td id="mtn-name">Mt. Elbert</td>
                                     <td id="elevation">14,000</td>
                                     <td id="windspeed">60mph</td>
                                     <td id="temp">10F</td>
                                     <td id="distance">180mi</td>
-                                    <td id="map"><a href=#>Link</a></td><!--.attr(data-target, #route-table-i-->
+                                    <td id="map"><a href=#>Link</a></td>
+                                    <!--.attr(data-target, #route-table-i-->
                                     <td><i role="button" data-toggle="collapse" data-target="#collapseTwo" class="fas fa-plus-square fa-2x collapsed"></i></td>
                                 </tr>
                             </tbody>
-                        </table><!--End #mountain-table-->
+                        </table>
+                        <!--End #mountain-table-->
                     </div>
-                        
+
                     <div id="collapseTwo" class="collapse" data-parent="#master-table">
                         <div class="card-body">
                             <!-- Routes sub-Table -->
-                            <table  class="table table-striped table-light">      
+                            <table class="table table-striped table-light">
                                 <thead class="thead-green">
                                     <tr>
                                         <th class="th-xl">Route Name</th>
@@ -198,11 +244,15 @@
                                         <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
                                     </tr>
                                 </tbody>
-                            </table><!--End #route-table-->
-                        </div><!--End Card Body-->
-                    </div><!--End #collapseTwo-->
-                </div><!--End Card 2-->
-                
+                            </table>
+                            <!--End #route-table-->
+                        </div>
+                        <!--End Card Body-->
+                    </div>
+                    <!--End #collapseTwo-->
+                </div>
+                <!--End Card 2-->
+
                 <!--Start Card 3-->
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -213,33 +263,40 @@
                                     <th class="th-sm">Rank</th>
                                     <th class="th-lg">Mountain</th>
                                     <th class="th-lg">Elevation</th>
-                                    <th class="th-md">Wind</th><!--(Weather API) mph -->
-                                    <th class="th-md">Temp</th><!--(Weather API) Air temp at 14,000ft-->
-                                    <th class="th-md">Dist</th><!--(Google Maps) Distance from User-->
-                                    <th class="th-lg">Directions</th><!--Google Link-->
+                                    <th class="th-md">Wind</th>
+                                    <!--(Weather API) mph -->
+                                    <th class="th-md">Temp</th>
+                                    <!--(Weather API) Air temp at 14,000ft-->
+                                    <th class="th-md">Dist</th>
+                                    <!--(Google Maps) Distance from User-->
+                                    <th class="th-lg">Directions</th>
+                                    <!--Google Link-->
                                     <th class="th-sm"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><!--turn background color of entire row green, yellow, or red depending on conditional params-->
-                                    <th><i id="favorite-3" value="false" class="far fa-heart fa-2x"></i></th>
+                                <tr>
+                                    <!--turn background color of entire row green, yellow, or red depending on conditional params-->
+                                    <th><i id="3" value="false" class="favorite far fa-heart fa-2x"></i></th>
                                     <td id="rank">5</td>
                                     <td id="mtn-name">Capitol Peak</td>
                                     <td id="elevation">14,000</td>
                                     <td id="windspeed">60mph</td>
                                     <td id="temp">10F</td>
                                     <td id="distance">180mi</td>
-                                    <td id="map"><a href=#>Link</a></td><!--.attr(data-target, #route-table-i-->
+                                    <td id="map"><a href=#>Link</a></td>
+                                    <!--.attr(data-target, #route-table-i-->
                                     <td><i role="button" data-toggle="collapse" data-target="#collapseThree" class="fas fa-plus-square fa-2x collapsed"></i></td>
                                 </tr>
                             </tbody>
-                        </table><!--End #mountain-table-->
+                        </table>
+                        <!--End #mountain-table-->
                     </div>
-                        
+
                     <div id="collapseThree" class="collapse" data-parent="#maser-table">
                         <div class="card-body">
                             <!-- Routes sub-Table -->
-                            <table  class="table table-striped table-light">      
+                            <table class="table table-striped table-light">
                                 <thead class="thead-green">
                                     <tr>
                                         <th class="th-xl">Route Name</th>
@@ -284,11 +341,16 @@
                                         <td id="route-description"><i class="fas fa-map-marked-alt fa-2x"></i></td>
                                     </tr>
                                 </tbody>
-                            </table><!--End #route-table-->
-                        </div><!--End Card Body-->
-                    </div><!--End #collapseThree-->
-                </div><!--End Card 3-->
-        </div><!--End Container-->
+                            </table>
+                            <!--End #route-table-->
+                        </div>
+                        <!--End Card Body-->
+                    </div>
+                    <!--End #collapseThree-->
+                </div>
+                <!--End Card 3-->
+            </div>
+            <!--End Container-->
 
 
     </section>
@@ -312,6 +374,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
     <!-- Custom JS -->
+    <script type="text/javascript" src="assets/javascript/firebaseLogin.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
     <script type="text/javascript" src="assets/javascript/weather.js"></script>
 </body>
