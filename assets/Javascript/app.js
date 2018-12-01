@@ -124,7 +124,7 @@ var distance;
     //Toggle Routes View
     $(".routes-table").hide();
     
-    $(".container").on("click", "#plus-btn", function () {
+    $("#table-list").on("click", "#plus-btn", function () {
         if ($(this).hasClass("fa-plus-square")) {
             $(this).removeClass("fa-plus-square")
         } else {
@@ -141,7 +141,7 @@ var distance;
     //Toggle Route Beta View
     $(".route-beta").hide();
 
-    $(".container").on("click", "#beta-btn", function () {
+    $("#table-list").on("click", "#beta-btn", function () {
         if ($(this).hasClass("fa-map-marked-alt")) {
             $(this).removeClass("fa-map-marked-alt")
         } else {
