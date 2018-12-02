@@ -87,11 +87,12 @@ $(function () {
             // $newMtnTable.find(".temp").text(varTemp);
             // $newMtnTable.find(".distance").text(varDist);
             // $newMtnTable.find(".directions").text(varDirectionsLink);
+            $newMtnTable.insertAfter($("#mtn-render"));
 
-            //Routes Sub-Table--------
+            //Render Routes Sub-Tables--------
             $newMtnTable.find("#routes").attr("id", "mtn-" + this.rank + "-routes");
             
-            $(this.trails).each(function (key,value) {
+            $.each(this.trails, function (key,value) {
                 var $newRouteTable = $(".route-template").clone();
                 
                 $newRouteTable.removeClass("route-template").attr("id", "route-" + this.routeID);
@@ -101,7 +102,7 @@ $(function () {
                 $newRouteTable.insertAfter($("#route-render"));
             });
                         
-            $newMtnTable.insertAfter($("#mtn-render"));
+           
         });
             
 
