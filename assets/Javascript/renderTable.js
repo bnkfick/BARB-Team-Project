@@ -96,7 +96,7 @@ $(function () {
                 
                 $newRouteTable.removeClass("route-template").attr("id", "route-" + this.routeID);
 
-                $newRouteTable.find(".route-name").text(this.routeName + "hello");
+                $newRouteTable.find(".route-name").text(this.routeName);
 
                 $newRouteTable.insertAfter($("#route-render"));
             });
