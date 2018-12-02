@@ -6,10 +6,6 @@ $(function () {
             peakName: "Mount Elbert",
             elevation: 14433,
             weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,106/forecast"],
-            // wind: varWind,
-            // temp: varTemp,
-            // dist: varDistance,
-            // driveDirections: varDriveDirections,
             trails: [
                 {
                     routeID: 11,
@@ -38,10 +34,6 @@ $(function () {
             peakName: "Gray's Peak",
             elevation: 14270,
             weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"],
-            // wind: varWind,
-            // temp: varTemp,
-            // dist: varDistance,
-            // driveDirections: varDriveDirections,
             trails: [
                 {
                     routeID: 91,
@@ -64,7 +56,7 @@ $(function () {
                     exposure: 3,
                 },
             ],
-        }
+        },//Insert next mtn obj after this
     ];
         
     
@@ -101,9 +93,38 @@ $(function () {
                 $newRouteTable.find(".route-gain").text(this.gain);
                 
                 //Re-write code below to show icons through if statement
-                $newRouteTable.find(".route-difficulty").text(this.difficulty);
+                var selectRouteDifficulty = $newRouteTable.find(".route-difficulty");
+                var difficulty = this.difficulty;
+                var easy = '<i class="fas fa-circle fa-2x"></i>';
+                var moderate = '<i class="fas fa-square fa-2x"></i>';
+                var hard = '<i class="fas fa-mountain fa-2x"></i>';
+                var extreme = '<i class="fas fa-mountain fa-2x"></i><i class="fas fa-mountain fa-2x"></i>';
+
+                if (difficulty === 4) {
+                    selectRouteDifficulty.append(extreme);
+                } else if (difficulty === 3) {
+                    selectRouteDifficulty.append(hard);
+                } else if (difficulty === 2) {
+                    selectRouteDifficulty.append(moderate);
+                } else {
+                    selectRouteDifficulty.append(easy);
+                }
+                
                 
                 //Re-write code below to show icons through if statement
+                var selectRouteExposure = $newRouteTable.find(".route-exposure");
+                var exposure = this.exposure;
+                
+                if (exposure === 4) {
+                    selectRouteExposure.css("background-color", "black");
+                } else if (exposure === 3) {
+                    selectRouteExposure.css("background-color", "gray");
+                } else if (exposure === 2) {
+                    selectRouteExposure.css("background-color", "blue");
+                } else {
+                    selectRouteExposure.css("background-color", "green");
+                }
+
                 $newRouteTable.find(".route-exposure").text(this.exposure);
 
                 //assigns route ID to route desciption beta dropdown
