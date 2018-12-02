@@ -26,6 +26,15 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=135260449884982&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <header></header>
 
     <!--Log In Section----------------------------------------->
@@ -160,15 +169,20 @@
                             <tr >
                                 <td colspan="6">
                                     <div id="route-x-beta" class="row route-beta">
-                                        <div class="col-md-7 routeMapEmbed"><!--@Brayden-->
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24597.817441012663!2d-105.66133819306746!3d39.58829863606427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876ba9ca85fb4895%3A0xefa49d55b6cbb1b1!2sMt+Evans!5e0!3m2!1sen!2sus!4v1543554572340" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                        <div class="col-md-7 routeMapEmbed"><!--renderTable.js 112-->
                                         </div>
                                         <div class="col-md-5">
                                             <h5>Route Description:</h5>
                                             <p>
                                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus voluptatem vitae, sunt provident illum dolorum impedit libero quos deserunt repellat reiciendis delectus, consequatur alias asperiores minus architecto earum. Ipsum, libero.
                                             </p>
+                                            
                                             <h5>User Comments</h5>
+                                            <div class="fb-comments" data-href="https://www.facebook.com/groups/82338447841/" data-width="400" data-numposts="10"></div>
+                                            
+                                            
+                                            <iframe width="400" height="550" src="http://meetu.ps/3jBgWG" frameborder="0"></iframe>
+
                                         </div>
                                     </div>
                                 </td>

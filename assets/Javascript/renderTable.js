@@ -68,8 +68,7 @@ $(function () {
     ];
         
     
-    
-    // console.log(peakInfo);
+
 
     function renderMtnTables() {
         $.each(peakInfo, function (key, value) {
@@ -111,7 +110,16 @@ $(function () {
                 $newRouteTable.find("#route-x-beta").attr("id", "route-" + this.routeID + "-beta");
 
                 //appends routeMapEmbed
-                // $newRouteTable.find(".routeMapEmbed").append(this.routeMapEmbed);
+                var routeMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", this.routeMapEmbed);
+                $newRouteTable.find(".routeMapEmbed").append(routeMap);
+
+                //appends trailHead map
+
+                var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
+                var meters = 0;
+                var distance;
+                var trailHeadMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder", 0).attr("style", "border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + this.trailHeadLocation);
+                $newRouteTable.find(".routeMapEmbed").append(trailHeadMap);
 
                 //Create route description in object and code here
 
