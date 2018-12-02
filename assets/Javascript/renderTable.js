@@ -25,7 +25,7 @@ $(function () {
                     mileage: 8.5,
                     gain: 4150,
                     difficulty: 3,
-                    exposure: 3,
+                    exposure: 2,
                 },
             ],
         },
@@ -43,7 +43,7 @@ $(function () {
                     mileage: 8.00,
                     gain: 3000,
                     difficulty: 1,
-                    exposure: 1,
+                    exposure: 3,
                 },
                 {
                     routeID: 92,
@@ -53,13 +53,15 @@ $(function () {
                     mileage: 6.50,
                     gain: 3000,
                     difficulty: 3,
-                    exposure: 3,
+                    exposure: 4,
                 },
             ],
         },//Insert next mtn obj after this
     ];
         
-    
+    var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
+    var meters = 0;
+    var distance;
 
 
     function renderMtnTables() {
@@ -76,7 +78,12 @@ $(function () {
             $newMtnTable.find(".elevation").text(this.elevation);
             // $newMtnTable.find(".windspeed").text(varWind);
             // $newMtnTable.find(".temp").text(varTemp);
+            
             // $newMtnTable.find(".distance").text(varDist);
+            
+
+
+
             // $newMtnTable.find(".directions").text(varDirectionsLink);
             $newMtnTable.insertAfter($("#mtn-render"));
 
@@ -92,7 +99,7 @@ $(function () {
                 $newRouteTable.find(".route-mileage").text(this.mileage);
                 $newRouteTable.find(".route-gain").text(this.gain);
                 
-                //Re-write code below to show icons through if statement
+                //ROUTE DIFFICULTY 
                 var selectRouteDifficulty = $newRouteTable.find(".route-difficulty");
                 var difficulty = this.difficulty;
                 var easy = '<i class="fas fa-circle fa-2x"></i>';
@@ -111,21 +118,21 @@ $(function () {
                 }
                 
                 
-                //Re-write code below to show icons through if statement
-                var selectRouteExposure = $newRouteTable.find(".route-exposure");
+                //ROUTE EXPOSURE: 
+                var selectRouteExposure = $newRouteTable.find(".progress-bar");
                 var exposure = this.exposure;
                 
                 if (exposure === 4) {
-                    selectRouteExposure.css("background-color", "black");
+                    selectRouteExposure.removeClass("bg-success").addClass("bg-danger").attr("style", "width: 100%").text("EXTREME");
                 } else if (exposure === 3) {
-                    selectRouteExposure.css("background-color", "gray");
+                    selectRouteExposure.removeClass("bg-success").addClass("bg-warning").attr("style", "width: 75%").text("HIGH");
                 } else if (exposure === 2) {
-                    selectRouteExposure.css("background-color", "blue");
+                    selectRouteExposure.removeClass("bg-success").attr("style", "width: 50%").text("MODERATE");
                 } else {
-                    selectRouteExposure.css("background-color", "green");
+                    // selectRouteExposure.css("background-color", "green");
                 }
 
-                $newRouteTable.find(".route-exposure").text(this.exposure);
+                // $newRouteTable.find(".route-exposure").text(this.exposure);
 
                 //assigns route ID to route desciption beta dropdown
                 $newRouteTable.find("#route-x-beta").attr("id", "route-" + this.routeID + "-beta");
@@ -135,10 +142,9 @@ $(function () {
                 $newRouteTable.find(".routeMapEmbed").append(routeMap);
 
                 //appends trailHead map
-
-                var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
-                var meters = 0;
-                var distance;
+                // var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
+                // var meters = 0;
+                // var distance;
                 var trailHeadMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder", 0).attr("style", "border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + this.trailHeadLocation);
                 $newRouteTable.find(".routeMapEmbed").append(trailHeadMap);
 
@@ -162,7 +168,7 @@ $(function () {
     
 
     //Toggle Routes View
-    $(".routes-table").hide();
+    // $(".routes-table").hide();
     
     $("#table-list").on("click", "#plus-btn", function () {
         if ($(this).hasClass("fa-plus-square")) {
