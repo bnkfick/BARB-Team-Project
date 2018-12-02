@@ -124,35 +124,35 @@ var distance;
     //Toggle Routes View
     // $(".routes-table").hide();
     
-    $("#table-list").on("click", "#plus-btn", function () {
-        if ($(this).hasClass("fa-plus-square")) {
-            $(this).removeClass("fa-plus-square")
-        } else {
-            $(this).addClass("fa-plus-square");
-        }
+    // $("#table-list").on("click", "#plus-btn", function () {
+    //     if ($(this).hasClass("fa-plus-square")) {
+    //         $(this).removeClass("fa-plus-square")
+    //     } else {
+    //         $(this).addClass("fa-plus-square");
+    //     }
 
-        var mtnID = $(this).parent().parent().parent().parent().attr("id")
-        // console.log(mtnID);
+    //     var mtnID = $(this).parent().parent().parent().parent().attr("id")
+    //     // console.log(mtnID);
 
-        $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
-        });
-    });
+    //     $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
+    //     });
+    // });
 
     //Toggle Route Beta View
     // $(".route-beta").hide();
 
-    $("#table-list").on("click", "#beta-btn", function () {
-        if ($(this).hasClass("fa-map-marked-alt")) {
-            $(this).removeClass("fa-map-marked-alt")
-        } else {
-            $(this).addClass("fa-map-marked-alt");
-        }
-        var routeID = $(this).parent().parent().attr("id");
-        // console.log(routeID)
+    // $("#table-list").on("click", "#beta-btn", function () {
+    //     if ($(this).hasClass("fa-map-marked-alt")) {
+    //         $(this).removeClass("fa-map-marked-alt")
+    //     } else {
+    //         $(this).addClass("fa-map-marked-alt");
+    //     }
+    //     var routeID = $(this).parent().parent().attr("id");
+    //     // console.log(routeID)
         
-        $("#"+routeID + "-beta").slideToggle(500, "swing", function () {  
-        });
-    });
+    //     $("#"+routeID + "-beta").slideToggle(500, "swing", function () {  
+    //     });
+    // });
 
     var times = [];
     $.ajax({
