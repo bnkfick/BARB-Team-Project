@@ -82,7 +82,7 @@ var distance;
             url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination="+ mapsInfo[i].trailHeadLocations[0]+"&key="+aK,
             method: "GET"
         }) .then(function(response){
-            console.log(response);
+            // console.log(response);
             //For now if more than one route is listed we will simply go with the first. It will make the logic to write the loop more manageable.
             meters = 0;
             if(response.status === "ZERO_RESULTS"){
@@ -94,10 +94,10 @@ var distance;
             };
             if(meters !== 0){
                 distance = Math.round((meters * 3.281) / 5280);
-                console.log(distance + " miles");
+                // console.log(distance + " miles");
                 $("#route-map").append("<p>", "Distance: " + distance + " Miles.")
             } else {
-                console.log(distance);
+                // console.log(distance);
                 $("#route-map").append(distance);
             };
         
@@ -122,37 +122,37 @@ var distance;
     // })
     
     //Toggle Routes View
-    $(".routes-table").hide();
+    // $(".routes-table").hide();
     
-    $("#table-list").on("click", "#plus-btn", function () {
-        if ($(this).hasClass("fa-plus-square")) {
-            $(this).removeClass("fa-plus-square")
-        } else {
-            $(this).addClass("fa-plus-square");
-        }
+    // $("#table-list").on("click", "#plus-btn", function () {
+    //     if ($(this).hasClass("fa-plus-square")) {
+    //         $(this).removeClass("fa-plus-square")
+    //     } else {
+    //         $(this).addClass("fa-plus-square");
+    //     }
 
-        var mtnID = $(this).parent().parent().parent().parent().attr("id")
-        console.log(mtnID);
+    //     var mtnID = $(this).parent().parent().parent().parent().attr("id")
+    //     // console.log(mtnID);
 
-        $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
-        });
-    });
+    //     $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
+    //     });
+    // });
 
     //Toggle Route Beta View
-    $(".route-beta").hide();
+    // $(".route-beta").hide();
 
-    $("#table-list").on("click", "#beta-btn", function () {
-        if ($(this).hasClass("fa-map-marked-alt")) {
-            $(this).removeClass("fa-map-marked-alt")
-        } else {
-            $(this).addClass("fa-map-marked-alt");
-        }
-        var routeID = $(this).parent().parent().attr("id");
-        console.log(routeID)
+    // $("#table-list").on("click", "#beta-btn", function () {
+    //     if ($(this).hasClass("fa-map-marked-alt")) {
+    //         $(this).removeClass("fa-map-marked-alt")
+    //     } else {
+    //         $(this).addClass("fa-map-marked-alt");
+    //     }
+    //     var routeID = $(this).parent().parent().attr("id");
+    //     // console.log(routeID)
         
-        $("#"+routeID + "-beta").slideToggle(500, "swing", function () {  
-        });
-    });
+    //     $("#"+routeID + "-beta").slideToggle(500, "swing", function () {  
+    //     });
+    // });
 
     var times = [];
     $.ajax({
@@ -186,7 +186,7 @@ var distance;
             
         }
     
-        console.log(times);
+        // console.log(times);
         
     });
 

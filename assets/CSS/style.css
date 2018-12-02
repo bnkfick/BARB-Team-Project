@@ -16,6 +16,14 @@ section {
     margin: 5em 0;
 }
 
+.mtn-template {
+    display: none;
+}
+
+.route-template {
+    display: none;
+}
+
 .container {
     background-color: rgba(0, 0, 255, 0);
 }
