@@ -122,7 +122,7 @@ var distance;
     // })
     
     //Toggle Routes View
-    // $(".routes-table").hide();
+    $(".routes-table").hide();
     
     // $("#table-list").on("click", "#plus-btn", function () {
     //     if ($(this).hasClass("fa-plus-square")) {

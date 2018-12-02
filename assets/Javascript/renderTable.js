@@ -63,6 +63,36 @@ $(function () {
     var meters = 0;
     var distance;
 
+    function getDistance(i){
+        $.ajax({
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination="+ mapsInfo[i].trailHeadLocations[0]+"&key="+aK,
+            method: "GET"
+        }) .then(function(response){
+            console.log(response);
+            //For now if more than one route is listed we will simply go with the first. It will make the logic to write the loop more manageable. 
+            //I also don't feel that all our our info is accurate.
+            meters = 0;
+            if(response.status === "ZERO_RESULTS"){
+                distance = "Road Closed for Winter";
+            } else {
+            for(n = 0; n < response.routes[0].legs.length; n++);
+            meters += parseFloat(response.routes[0].legs[0].distance.value);
+            // console.log(meters);
+            };
+            if(meters !== 0){
+                distance = Math.round((meters * 3.281) / 5280);
+                console.log(distance + " miles");
+                console.log(i+1);
+                $("#mtn-"+(i+1)+"-conditions #distance").text(distance + "mi")
+            } else {
+                console.log(distance);
+                console.log(i+1);
+                $("#mtn-"+(i+1)+"-conditions #distance").text("<p>", distance);
+            };
+        
+        });
+    }
+
 
     function renderMtnTables() {
         $.each(peakInfo, function (key, value) {
