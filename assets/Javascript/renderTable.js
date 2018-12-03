@@ -1,5 +1,11 @@
 $(function () {
-  
+    //Drag and Drop
+    // $("#sortable-mtns").sortable({
+    //     // connectWith: ".connectedSortable"
+    // }).disableSelection();
+
+    
+
     var peakInfo = [
         {
             rank: 1,
@@ -21,12 +27,12 @@ $(function () {
                 {
                     routeID: 12,
                     routeName: "Mount Elbert - Box Creek Couloirs",
-                    routeMapEmbed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d21808.789909414772!2d-106.44900905419223!3d39.13561769450933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876a9896bb697417%3A0x7db7846336fd41c1!2sMt+Elbert+Trailhead+parking+lot%2C+Twin+Lakes%2C+CO+81251!3m2!1d39.1518473!2d-106.41218219999999!4m5!1s0x876aa1f6a3ec0407%3A0xb137245172b73c6!2sMount+Elbert%2C+Colorado!3m2!1d39.1178157!2d-106.4452306!5e1!3m2!1sen!2sus!4v1543515830920",
-                    trailHeadLocation: "39.1518473,-106.4121822",
+                    routeMapEmbed:"https://www.google.com/maps/embed?pb=!1m27!1m12!1m3!1d25508.894514807103!2d-106.4308786298138!3d39.105241155716435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m12!3e2!4m4!2sUnnamed+Road%2C+Twin+Lakes%2C+CO+81251!3m2!1d39.099329999999995!2d-106.36713999999999!4m5!1s0x876aa1f6a3ec0407%3A0xb137245172b73c6!2sMount+Elbert%2C+Colorado!3m2!1d39.1178157!2d-106.4452306!5e1!3m2!1sen!2sus!4v1543780071007",
+                    trailHeadLocation: "39.09933, -106.36714",
                     mileage: 8.5,
                     gain: 4150,
                     difficulty: 3,
-                    exposure: 2,
+                    exposure: 3,
                 },
             ],
         },
@@ -45,20 +51,48 @@ $(function () {
                     mileage: 8.00,
                     gain: 3000,
                     difficulty: 1,
-                    exposure: 3,
+                    exposure: 1,
                 },
                 {
                     routeID: 92,
                     routeName: "Gray's Peak - SW Ridge",
                     routeMapEmbed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d18464.660124769507!2d-105.81869269847468!3d39.64724068017239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876a5332f585304f%3A0xa954806de5d605fd!2sGrays+And+Torreys+Trailhead%2C+3025+Stevens+Gulch+Rd%2C+Silver+Plume%2C+CO+80476!3m2!1d39.6607948!2d-105.78464729999999!4m5!1s0x876a537ad25d62eb%3A0xee3b27c04410d6ee!2sGrays+Peak%2C+Colorado!3m2!1d39.6336054!2d-105.81716399999999!5e1!3m2!1sen!2sus!4v1543523584382",
-                    trailHeadLocation: "39.660789,-105.784648",
-                    mileage: 6.50,
-                    gain: 3000,
+                    trailHeadLocation: "39.60045,-105.83816",
+                    mileage: 10.25,
+                    gain: 3800,
                     difficulty: 3,
-                    exposure: 4,
+                    exposure: 3,
                 },
             ],
         },//Insert next mtn obj after this
+        {
+            rank: 11, 
+            peakName: "Torrey's Peak",
+            elevation: 14267,
+            weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"],
+            trails: [
+                {
+                    routeID: 111,
+                    routeName: "Torrey's Peak - Kelso Ridge",
+                    routeMapEmbed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d18464.250286895884!2d-105.8205323984709!3d39.64877532942564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876a5332f585304f%3A0xa954806de5d605fd!2sGrays+And+Torreys+Trailhead%2C+3025+Stevens+Gulch+Rd%2C+Silver+Plume%2C+CO+80476!3m2!1d39.6607948!2d-105.78464729999999!4m5!1s0x876a5373a0c13d2f%3A0x8b1a1aefcab5da3f!2sTorreys+Peak%2C+Colorado!3m2!1d39.6427647!2d-105.82139819999999!5e1!3m2!1sen!2sus!4v1543523745630",
+                    trailHeadLocation: "39.660789,-105.784648",
+                    mileage: 6.75,
+                    gain: 3100,
+                    difficulty: 3,
+                    exposure: 4,
+                },
+                {
+                    routeID: 112,
+                    routeName: "Torrey's Peak - Emperor Couloir",
+                    routeMapEmbed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d18464.250286895884!2d-105.8205323984709!3d39.64877532942564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876a5332f585304f%3A0xa954806de5d605fd!2sGrays+And+Torreys+Trailhead%2C+3025+Stevens+Gulch+Rd%2C+Silver+Plume%2C+CO+80476!3m2!1d39.6607948!2d-105.78464729999999!4m5!1s0x876a5373a0c13d2f%3A0x8b1a1aefcab5da3f!2sTorreys+Peak%2C+Colorado!3m2!1d39.6427647!2d-105.82139819999999!5e1!3m2!1sen!2sus!4v1543523745630",
+                    trailHeadLocation: "39.660789,-105.784648",
+                    mileage: 9.5,
+                    gain: 4500,
+                    difficulty: 4,
+                    exposure: 3,
+                },
+            ]
+        },
     ];
         
     var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
@@ -105,8 +139,9 @@ $(function () {
             $newMtnTable.removeClass("mtn-template").attr("id", "mtn-" + this.rank);
             
             //Main Mountain table
-            $newMtnTable.find("#conditions").attr("id", "mtn-" + this.rank + "-conditions");
-            //Write weather condition if statement here to change BG Color
+            
+            var windConditions = $newMtnTable.find("#conditions").attr("id", "mtn-" + this.rank + "-conditions");
+            
             $newMtnTable.find(".rank").text(this.rank);
             $newMtnTable.find(".name").text(this.peakName);
             $newMtnTable.find(".elevation").text(this.elevation);
@@ -116,11 +151,22 @@ $(function () {
             getDistance(i, target);
             i++;
             
+            // Create unique IDs for weather TDs
+            $newMtnTable.find(".windspeed").attr("id", "mtn-" + this.rank + "-wind");
+            $newMtnTable.find(".temperature").attr("id", "mtn-" + this.rank + "-temperature");
+            $newMtnTable.find(".wind-direction").attr("id", "mtn-" + this.rank + "-wind-direction");
+            $newMtnTable.find(".short-forecast").attr("id", "mtn-" + this.rank + "-short-forecast");
+
+            target = this.rank;
+            getWeatherConditions(i, target);
+            i++;
+            
+            
             // $newMtnTable.find(".distance").text(getDistance(i));
             
 
 
-
+            
             // $newMtnTable.find(".directions").text(varDirectionsLink);
             $newMtnTable.insertAfter($("#mtn-render"));
 
@@ -197,15 +243,81 @@ $(function () {
             
 
     };
-
     
+    //Get Wind and Temperature
+    function getWeatherConditions(i, target) {
+        var times = [];
+        $.ajax({
+        url: peakInfo[i].weatherLink,
+        method: "GET"
+    
+        }).then(function(response){
+        // console.log(response);
+            for (var n = 0; n < 6; n++) {
+                times.push({
+                    number: response.properties.periods[n].number,
+                    startTime: response.properties.periods[n].startTime,
+                    temperature: response.properties.periods[n].temperature,
+                    windSpeed: response.properties.periods[n].windSpeed,
+                    windDirection: response.properties.periods[n].windDirection,
+                    shortForecast: response.properties.periods[n].shortForecast,
+                    detailedForecast: response.properties.periods[n].detailedForecast
+                });
+            
+            };
+            console.log(times[0]);
 
+            //Render weather to tables
+            $("#mtn-" + (target) + "-wind").text(times[0].windSpeed);
+            $("#mtn-" + (target) + "-temperature").text(times[0].temperature + " F");
+            $("#mtn-" + (target) + "-wind-direction").text(times[0].windDirection);
+            // $("#mtn-" + (target) + "-short-forecast").text(times[0].shortForecast);
+            
+            //Conditional Formatting for Windspeed
+            var windSpeedString = times[0].windSpeed;
+            var windSpeedRange = windSpeedString.match(/\d+/g).map(Number);
+            //This returns array of low and high wind speeds
+            var windConditions = $("#mtn-" + (target) + "-wind") 
+
+            if (windSpeedRange[1] > 75) {
+                windConditions.css("background-color", "rgba(191, 78, 63, 0.4)")
+            } else if ( (windSpeedRange[0] > 30) && (windSpeedRange[1] <= 75 ) ) {
+                windConditions.css("background-color", "rgba(229, 238, 73, 0.4)")
+            } else {
+                windConditions.css("background-color", "rgba(63, 191, 63, 0.4)")
+            }
+
+            //Conditional Formatting for Temperature
+            var temp = times[0].temperature;
+
+            var tempConditions = $("#mtn-" + target + "-temperature");
+
+            if (temp < 32) {
+                tempConditions.css("background-color", "rgb(30, 201, 255, 0.4)");
+            } else if ((temp > 32) && (temp < 60) ) {
+                tempConditions.css("background-color", "rgba(63, 191, 63, 0.4)");
+            } else {
+                tempConditions.css("background-color", "rgba(191, 78, 63, 0.4)");
+            }
+
+            //Conditional Formatting for Short Forecast
+            var shortForecast = times[0].shortForecast;
+
+            var shortForecastConditions = $("#mtn-" + (target) + "-short-forecast");
+
+            if (shortForecast === "Chance Snow Showers") {
+                shortForecastConditions.css('background-image', 'url("http://icons.iconarchive.com/icons/icons8/christmas-flat-color/256/snowflake-icon.png")')
+            } 
+        });
         
-    renderMtnTables();
+        
+    };
+    
+          
     
 
-    //Toggle Routes View
-    // $(".routes-table").hide();
+    //Toggle Routes View----------------------------------------
+    $(".routes-table").hide();
     
     $("#table-list").on("click", "#plus-btn", function () {
         if ($(this).hasClass("fa-plus-square")) {
@@ -241,15 +353,15 @@ $(function () {
 
 
 
+    //Renders   
+    renderMtnTables();
+    // renderWindSpeed();
 
 
 
 
 
-
-
-
-
+    
 
 
 
