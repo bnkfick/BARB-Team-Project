@@ -64,7 +64,7 @@ var mapsInfo = [{
     trailGains: [7600],
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m27!1m12!1m3!1d36252.16433403112!2d-105.02240677139945!3d38.84783772183579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m12!3e2!4m5!1s0x871350abde6e062d%3A0x3ef5195833a8b8a8!2s2+Hydro+St%2C+Manitou+Springs%2C+CO+80829!3m2!1d38.8552651!2d-104.93300789999999!4m4!2s38.840925%2C+-105.042035!3m2!1d38.840925!2d-105.042035!5e1!3m2!1sen!2sus!4v1543538670897"],
     trailHeadLocations: ["38.855881,-104.933905"],
-     weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,105/forecast"]
+    weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,105/forecast"]
     },  
     {
     peakName: "Mount Bierstadt",
@@ -98,49 +98,63 @@ var mapsInfo = [{
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d36149.66248538486!2d-106.52441361925378!3d39.04854736397552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876aa0e9541da713%3A0x812000a012d4416d!2sLa+Plata+Gulch+Trailhead%2C+CO-82%2C+Buena+Vista%2C+CO+81211!3m2!1d39.067932!2d-106.5050583!4m5!1s0x876aa6c2ff3836a7%3A0x7cf4b8085e37a3d3!2sLa+Plata+Peak%2C+Colorado!3m2!1d39.0294368!2d-106.4730831!5e1!3m2!1sen!2sus!4v1543530770420"],
     trailHeadLocations: ["39.067863,-106.504948"],
     weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,107/forecast"]
-    },  
-    
-];
+    }];
    
 
-var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
-var meters = 0;
-var distance;
+
+   
+
+
+
+    var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
+    var meters = 0;
+    var distance;
+
+
+    //Render MountainArray to HTML
+//     for (var i = 0; i < mapsInfo.length; i++) {
+//         var trailMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder", 0).attr("style", "border:0").attr("src", mapsInfo[i].trailMapEmbeds[0]);
+//         var trailHead = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder", 0).attr("style", "border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + mapsInfo[i].trailHeadLocations[0]);
+//         $("#route-map").append("<p>", mapsInfo[i].peakName).append("<p>", mapsInfo[i].trailNames[0]).append(trailMap);
+//         $("#route-map").append(trailHead);
 
     
   //Render MountainArray to HTML
-  for(var i = 0; i < 1; i++){
-        var trailMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", mapsInfo[i].trailMapEmbeds[i]);
-        var trailHead = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + mapsInfo[i].trailHeadLocations[0]); 
-        $("#route-" +(i+1)+ "-beta .col-md-7").append("<p>", "Trail Map").append(trailMap);
-        $("#route-" +(i+1)+ "-beta .col-md-7").append("<p>", "Trail Head: Click below for driving directions.").append(trailHead);
-        $("#mtn-"+(i+1)+"-conditions #name").text(mapsInfo[i].peakName);
-        $("#mtn-"+(i+1)+"-conditions #elevation").text(mapsInfo[i].elevation);
-        $("#mtn-"+(i+1)+"-conditions .rank").text(mapsInfo[i].rank);
-        $("#route-"+(i+1)+ " .route-name").text(mapsInfo[i].trailNames[i]);
-        $("#route-"+(i+1)+ " .route-mileage").text(mapsInfo[i].trailLengths[i]);
-        $("#route-"+(i+1)+ " .route-gain").text(mapsInfo[i].trailGains[i]);
-        getDistance(i);
-    };
+//   for(var i = 0; i < 1; i++){
+//         var trailMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", mapsInfo[i].trailMapEmbeds[i]);
+//         var trailHead = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", "https://www.google.com/maps/embed/v1/place?key=" + aK + "&q=" + mapsInfo[i].trailHeadLocations[0]); 
+//         $("#route-" +(i+1)+ "-beta .col-md-7").append("<p>", "Trail Map").append(trailMap);
+//         $("#route-" +(i+1)+ "-beta .col-md-7").append("<p>", "Trail Head: Click below for driving directions.").append(trailHead);
+//         $("#mtn-"+(i+1)+"-conditions #name").text(mapsInfo[i].peakName);
+//         $("#mtn-"+(i+1)+"-conditions #elevation").text(mapsInfo[i].elevation);
+//         $("#mtn-"+(i+1)+"-conditions .rank").text(mapsInfo[i].rank);
+//         $("#route-"+(i+1)+ " .route-name").text(mapsInfo[i].trailNames[i]);
+//         $("#route-"+(i+1)+ " .route-mileage").text(mapsInfo[i].trailLengths[i]);
+//         $("#route-"+(i+1)+ " .route-gain").text(mapsInfo[i].trailGains[i]);
+//         getDistance(i);
+ //   };
 
-    function getDistance(i){
+ //   function getDistance(i){
+
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination="+ mapsInfo[i].trailHeadLocations[0]+"&key="+aK,
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination=" + mapsInfo[i].trailHeadLocations[0] + "&key=" + aK,
             method: "GET"
+
         }) .then(function(response){
 
             // console.log(response);
+
             //For now if more than one route is listed we will simply go with the first. It will make the logic to write the loop more manageable.
 
             meters = 0;
-            if(response.status === "ZERO_RESULTS"){
+            if (response.status === "ZERO_RESULTS") {
                 distance = "Road Closed for Winter";
             } else {
-            for(n = 0; n < response.routes[0].legs.length; n++);
-            meters += parseFloat(response.routes[0].legs[0].distance.value);
-            // console.log(meters);
+                for (n = 0; n < response.routes[0].legs.length; n++);
+                meters += parseFloat(response.routes[0].legs[0].distance.value);
+                // console.log(meters);
             };
-            if(meters !== 0){
+            if (meters !== 0) {
                 distance = Math.round((meters * 3.281) / 5280);
 
                 console.log(distance + " miles");
@@ -151,16 +165,19 @@ var distance;
                 console.log(i+1);
                 $("#mtn-"+(i+1)+"-conditions #distance").text("<p>", distance);
             };
-        
-        });
-    }
 
-  
-  
-  
+        });
+
+
+    };
+
+
+
+
+
     // //Toggle Favorite Heart Outline to Solid
     // $("#master-table").on("click", "#favorite", function () {
-            
+
     //         var favorite = $("#favorite")
 
 
@@ -170,9 +187,11 @@ var distance;
     //             favorite.removeClass("fas").addClass("far").val("false");
     //         }
     // })
-    
+
     //Toggle Routes View
-    $(".routes-table").hide();
+
+
+    // $(".routes-table").hide();
     
     // $("#table-list").on("click", "#plus-btn", function () {
     //     if ($(this).hasClass("fa-plus-square")) {
@@ -181,12 +200,15 @@ var distance;
     //         $(this).addClass("fa-plus-square");
     //     }
 
+
     //     var mtnID = $(this).parent().parent().parent().parent().attr("id")
     //     // console.log(mtnID);
+
 
     //     $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
     //     });
     // });
+
 
     //Toggle Route Beta View
     // $(".route-beta").hide();
@@ -235,40 +257,42 @@ var distance;
             });
             
         }
-    
-        // console.log(times);
-        
+      
+        var routeID = $(this).parent().parent().attr("id");
+        console.log(routeID)
+
+        $("#" + routeID + "-beta").slideToggle(500, "swing", function () {
+        });
     });
 
+});
 
+
+var times = [];
+    
+    for(var i = 0; i < mapsInfo.length; i++){
+        console.log(mapsInfo[i].weatherLink);
+        getWeather(i);
+    };
+
+    function getWeather(i) {
     var times = [];
     $.ajax({
-        url: mapsInfo[0].weatherLink[0],
+        url: mapsInfo[i].weatherLink,
         method: "GET"
     
-    }).then(function (response) {
-      
-            // var startTime=response.properties.periods[0].startTime;
-            // var days=response.properties.periods[0].number;
-            // var temperature=response.properties.periods[0].temperature;
-            // var windSpeed=response.properties.periods[0].windSpeed;
-            // var windDirection=response.properties.periods[0].windDirection;
-            // var shortForecast=response.properties.periods[0].shortForecast;
-            // var detailedForecast=response.properties.periods[0].detailedForecast;
-    
+    }).then(function(response){
         // console.log(response);
-        
-        for (var i = 0; i < 6; i++) { 
-            // console.log(response.properties.periods[i]);
-    
+        for (var n = 0; n < 6; n++) { 
             times.push({
-                number: response.properties.periods[i].number,
-                startTime: response.properties.periods[i].startTime,
-                temperature: response.properties.periods[i].temperature,
-                windSpeed: response.properties.periods[i].windSpeed,
-                windDirection: response.properties.periods[i].windDirection,
-                shortForecast: response.properties.periods[i].shortForecast,
-                detailedForecast:response.properties.periods[i].detailedForecast,
+                number: response.properties.periods[n].number,
+                startTime: response.properties.periods[n].startTime,
+                temperature: response.properties.periods[n].temperature,
+                windSpeed: response.properties.periods[n].windSpeed,
+                windDirection: response.properties.periods[n].windDirection,
+                shortForecast: response.properties.periods[n].shortForecast,
+                detailedForecast:response.properties.periods[n].detailedForecast,
+                icon: response.properties.periods[n].icon
             });
             
         }
@@ -276,10 +300,10 @@ var distance;
         console.log(times);
         
     });
+    };
 
 
 
-});
 
 
 
