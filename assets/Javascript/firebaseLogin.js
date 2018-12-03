@@ -68,7 +68,9 @@
         var tempMin = $("#temperature-min-input").val().trim();
         var tempMax = $("#temperature-max-input").val().trim();
 
-        var preferencesKey = $('#preferences').attr('data-id');
+        //@todo - this isn't necessary - find and remove?
+        //var preferencesKey = $('#preferences').attr('data-id');
+
 
         database.ref('preferences').orderByChild("userId").equalTo(currentUserId).once('value', function (snapshot) {
             //there should only be one record if results exist
@@ -77,7 +79,9 @@
                 console.log("UPDATING A USER PREFERENCES RECORD");
                 //we have a key, so use the key to update
                 snapshot.forEach(function (childSnapshot) {
-
+                    if (childSnapshot.val() && childSnapshot.val().userName != null && childSnapshot.val().userName != '') {
+                        $("#greeting").text("Hello " + childSnapshot.val().userName);
+                    }
                     database.ref("preferences")
                         .child(childSnapshot.key).update(
                             {
@@ -101,6 +105,8 @@
                     tempMin: tempMin,
                     tempMax: tempMax
                 };
+
+                $("#greeting").text("Hello " + userName);
 
 
                 database.ref("preferences").push(userPref);
@@ -248,7 +254,8 @@
             $('#login').hide();
             $('#loggedIn').show();
             $('#preferences').hide();
-
+            
+            $("#show-preferences").addClass("fa-plus-square")
             displayUserPreferences(firebaseUser.uid);
 
         } else {
@@ -272,12 +279,15 @@
 
         database.ref('preferences').orderByChild("userId").equalTo(uid).once('value', function (snapshot) {
             console.log(snapshot.val());
-            console.log(snapshot.numChildren());
+            console.log("snapshot.numChildren()", snapshot.numChildren());
 
             if (snapshot && snapshot.numChildren() > 0) {
 
                 snapshot.forEach(function (childSnapshot) {
-                    console.log("INSIDE SNAPSHOT" + childSnapshot.val().userName);
+                    console.log("INSIDE SNAPSHOT " + childSnapshot.val().userName);
+                    if (childSnapshot.val() && childSnapshot.val().userName != null && childSnapshot.val().userName != '') {
+                        $("#greeting").text("Hello " + childSnapshot.val().userName);
+                    }
                     $("#user-name-input").val(childSnapshot.val().userName);
                     $("#wind-input").val(childSnapshot.val().windLimit);
                     $("#precipitation-input").val(childSnapshot.val().precipLimit);

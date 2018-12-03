@@ -36,13 +36,16 @@
             padding: 5px;
             line-height: 1.5;
         }
-        .greeting {
-            float: right;
+        #greeting {
+            float: left;
+            font-size:1.5em;
+            padding-left: 10px;
         }
         #btnLogout {
             margin-bottom: 10px;
         
         }
+
         #login, #loggedIn {
             border-radius: 5px;
             padding: 10px;
@@ -53,9 +56,12 @@
             clear: both;
             text-align: left;
             background-color: #eee;
-            border: solid 1px darkslateblue;
+            border-top: solid 1px gray;
             padding: 10px;
             display: none;
+        }
+        input[type=number] { 
+            width: 50px;
         }
     </style>
 </head>
@@ -81,7 +87,7 @@
                     </button>
                 </div>
                 <div id="loggedIn">
-
+                    <div id="greeting">Hello </div>
                     <button id="btnLogout" class="btn btn-primary btn-action">
                         Log Out
                     </button>
@@ -90,22 +96,22 @@
                 </div>
 
                 <div id="preferences" data-id=''>
-                    <!-- Entry Form -->
+                    <h4>Preferred Climbing Conditions</h4>
                     <form>
                         <label for="user-name-input">Name</label>
-                        <input class="form-control" id="user-name-input" placeholder="Jane Doe" type="text">
+                        <input id="user-name-input" placeholder="Jane Doe" type="text">
 
                         <label for="wind-input">Wind Speed Below</label>
-                        <input class="form-control" id="wind-input" placeholder="10" type="number">
+                        <input id="wind-input" placeholder="10" type="number">
 
                         <label for="precipitation-input">% Chance of Precipitation Below</label>
-                        <input class="form-control" id="precipitation-input" placeholder="20" type="text">
+                        <input id="precipitation-input" placeholder="20" type="number">
 
                         <label for="temperature-min-input">Temperature Min</label>
-                        <input class="form-control" id="temperature-min-input" placeholder="20" type="text">
+                        <input id="temperature-min-input" placeholder="20" type="number">
 
                         <label for="temperature-max-input">Temperature Max</label>
-                        <input class="form-control" id="temperature-max-input" placeholder="90" type="text">
+                        <input id="temperature-max-input" placeholder="90" type="number">
 
                         <button class="btn btn-primary float-right" id="user-preferences-btn">Save</button>
                     </form>
