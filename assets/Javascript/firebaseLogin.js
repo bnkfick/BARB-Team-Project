@@ -80,7 +80,7 @@
                 //we have a key, so use the key to update
                 snapshot.forEach(function (childSnapshot) {
                     if (childSnapshot.val() && childSnapshot.val().userName != null && childSnapshot.val().userName != '') {
-                        $("#greeting").text("Hello " + childSnapshot.val().userName);
+                        $("#greeting").text("Hey " + childSnapshot.val().userName);
                     }
                     database.ref("preferences")
                         .child(childSnapshot.key).update(
@@ -92,6 +92,10 @@
                                 tempMin: tempMin,
                                 tempMax: tempMax
                             });
+                    $("#updateMsg").text("Your information has been updated");
+                    setTimeout(function () {
+                        $("#updateMsg").text("");
+                      }, 2000);
                 });
             } else {
                 //preferences have never been saved, so push
@@ -106,7 +110,7 @@
                     tempMax: tempMax
                 };
 
-                $("#greeting").text("Hello " + userName);
+                $("#greeting").text("Yo " + userName);
 
 
                 database.ref("preferences").push(userPref);
@@ -238,6 +242,7 @@
 
         //@TODO 
         // What happens to the mountain tables when a user log out
+        $(".favorite").removeClass("fas").addClass("far").attr("value", "false");
         // No Preferences
     });
 
@@ -254,8 +259,8 @@
             $('#login').hide();
             $('#loggedIn').show();
             $('#preferences').hide();
-            
-            $("#show-preferences").addClass("fa-plus-square")
+            $("#show-preferences").addClass("fa-plus-square");
+            $("#greeting").text("Hola");
             displayUserPreferences(firebaseUser.uid);
 
         } else {
@@ -285,8 +290,10 @@
 
                 snapshot.forEach(function (childSnapshot) {
                     console.log("INSIDE SNAPSHOT " + childSnapshot.val().userName);
-                    if (childSnapshot.val() && childSnapshot.val().userName != null && childSnapshot.val().userName != '') {
-                        $("#greeting").text("Hello " + childSnapshot.val().userName);
+                    if (childSnapshot.val()
+                        && childSnapshot.val().userName != null
+                        && childSnapshot.val().userName != '') {
+                        $("#greeting").text("hello " + childSnapshot.val().userName);
                     }
                     $("#user-name-input").val(childSnapshot.val().userName);
                     $("#wind-input").val(childSnapshot.val().windLimit);
