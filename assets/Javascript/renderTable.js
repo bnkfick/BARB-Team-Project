@@ -11,6 +11,7 @@ $(function () {
             rank: 1,
             peakName: "Mount Elbert",
             elevation: 14433,
+            peakLocation: "39.1518473,-106.4121822",
             weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,106/forecast"],
             trails: [
                 {
@@ -38,6 +39,7 @@ $(function () {
         {
             rank: 9,
             peakName: "Gray's Peak",
+            peakLocation: "39.660789,-105.784648",
             elevation: 14270,
             weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"],
             trails: [
@@ -96,8 +98,40 @@ $(function () {
     var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
     var meters = 0;
     var distance;
-    var i = 0;
 
+    function getDistance(i, target){
+        $.ajax({
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination="+ peakInfo[i].peakLocation+"&key="+aK,
+            method: "GET"
+        }) .then(function(response){
+            console.log(response);
+            //For now if more than one route is listed we will simply go with the first. It will make the logic to write the loop more manageable. 
+            //I also don't feel that all our our info is accurate.
+            meters = 0;
+            if(response.status === "ZERO_RESULTS"){
+                distance = "Road Closed for Winter";
+            } else {
+            for(n = 0; n < response.routes[0].legs.length; n++);
+            meters += parseFloat(response.routes[0].legs[0].distance.value);
+            // console.log(meters);
+            };
+            if(meters !== 0){
+                distance = Math.round((meters * 3.281) / 5280);
+                console.log(distance + " miles");
+                console.log(target);
+                console.log(i);
+                $("#mtn-"+(target)+"-conditions .distance").text(distance + "mi");
+            } else {
+                console.log(distance);
+                console.log(target);
+                console.log(i);
+                $("#mtn-"+(target)+"-conditions .distance").text(distance);
+            };
+        
+        });
+    }
+
+    var i = 0;
     function renderMtnTables() {
         $.each(peakInfo, function (key, value) {
             var $newMtnTable = $(".mtn-template").clone();
@@ -111,6 +145,11 @@ $(function () {
             $newMtnTable.find(".rank").text(this.rank);
             $newMtnTable.find(".name").text(this.peakName);
             $newMtnTable.find(".elevation").text(this.elevation);
+            // $newMtnTable.find(".windspeed").text(varWind);
+            // $newMtnTable.find(".temp").text(varTemp);
+            target = this.rank;
+            getDistance(i, target);
+            i++;
             
             // Create unique IDs for weather TDs
             $newMtnTable.find(".windspeed").attr("id", "mtn-" + this.rank + "-wind");
@@ -123,7 +162,7 @@ $(function () {
             i++;
             
             
-            // $newMtnTable.find(".distance").text(varDist);
+            // $newMtnTable.find(".distance").text(getDistance(i));
             
 
 

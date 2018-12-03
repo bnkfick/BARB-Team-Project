@@ -98,13 +98,11 @@ var mapsInfo = [{
     trailMapEmbeds: ["https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d36149.66248538486!2d-106.52441361925378!3d39.04854736397552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876aa0e9541da713%3A0x812000a012d4416d!2sLa+Plata+Gulch+Trailhead%2C+CO-82%2C+Buena+Vista%2C+CO+81211!3m2!1d39.067932!2d-106.5050583!4m5!1s0x876aa6c2ff3836a7%3A0x7cf4b8085e37a3d3!2sLa+Plata+Peak%2C+Colorado!3m2!1d39.0294368!2d-106.4730831!5e1!3m2!1sen!2sus!4v1543530770420"],
     trailHeadLocations: ["39.067863,-106.504948"],
     weatherLink: ["https://api.weather.gov/gridpoints/PUB/39,107/forecast"]
-    },  
-    
-];
+    }];
    
 
 
-    ];
+   
 
 
 
@@ -191,6 +189,7 @@ var mapsInfo = [{
     // })
 
     //Toggle Routes View
+
 
     // $(".routes-table").hide();
     
