@@ -60,8 +60,32 @@
             padding: 10px;
             display: none;
         }
+        .formcell, singlecell {
+            float: left;
+            width: 50%;
+            padding-left: 10px;
+        }
+        .singlecell {
+            width: 100%;
+        }
+        .singlecell label {
+            padding-left:12px;
+            margin-right:4px;
+            width: 25%;
+        }
+        label {
+            width: 50%;
+        }
+        input[type=text] { 
+            width: 400px;
+        }
         input[type=number] { 
             width: 50px;
+        }
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
         }
     </style>
 </head>
@@ -95,24 +119,30 @@
                     <i role="button" id="show-preferences" class="fas fa-plus-square fa-minus-square fa-2x"></i>
                 </div>
 
-                <div id="preferences" data-id=''>
+                <div id="preferences" class="clearfix" data-id=''>
+                    <div id="updateMsg"> </div>
                     <h4>Preferred Climbing Conditions</h4>
                     <form>
-                        <label for="user-name-input">Name</label>
-                        <input id="user-name-input" placeholder="Jane Doe" type="text">
-
-                        <label for="wind-input">Wind Speed Below</label>
-                        <input id="wind-input" placeholder="10" type="number">
-
-                        <label for="precipitation-input">% Chance of Precipitation Below</label>
-                        <input id="precipitation-input" placeholder="20" type="number">
-
-                        <label for="temperature-min-input">Temperature Min</label>
-                        <input id="temperature-min-input" placeholder="20" type="number">
-
-                        <label for="temperature-max-input">Temperature Max</label>
-                        <input id="temperature-max-input" placeholder="90" type="number">
-
+                        <div class="singlecell">
+                            <label for="user-name-input">Name</label>
+                            <input id="user-name-input"  type="text">
+                        </div>
+                        <div class="formcell">
+                            <label for="wind-input">Wind Speed Below</label>
+                            <input id="wind-input"  type="number">
+                        </div>
+                        <div class="formcell">
+                            <label for="precipitation-input">% Chance of Precipitation &lt;</label>
+                            <input id="precipitation-input" type="number">
+                        </div>
+                        <div class="formcell">
+                            <label for="temperature-min-input">Temperature Min</label>
+                            <input id="temperature-min-input"  type="number">
+                        </div>
+                        <div class="formcell">
+                            <label for="temperature-max-input">Temperature Max</label>
+                            <input id="temperature-max-input"  type="number">
+                        </div>
                         <button class="btn btn-primary float-right" id="user-preferences-btn">Save</button>
                     </form>
                 </div>
