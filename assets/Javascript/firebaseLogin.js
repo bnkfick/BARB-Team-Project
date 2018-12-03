@@ -76,11 +76,11 @@
             //there should only be one record if results exist
 
             if (snapshot && snapshot.numChildren() > 0) {
-                console.log("UPDATING A USER PREFERENCES RECORD");
+                //console.log("UPDATING A USER PREFERENCES RECORD");
                 //we have a key, so use the key to update
                 snapshot.forEach(function (childSnapshot) {
                     if (childSnapshot.val() && childSnapshot.val().userName != null && childSnapshot.val().userName != '') {
-                        $("#greeting").text("Hey " + childSnapshot.val().userName);
+                        $("#greeting").text("Hello " + childSnapshot.val().userName);
                     }
                     database.ref("preferences")
                         .child(childSnapshot.key).update(
@@ -99,7 +99,7 @@
                 });
             } else {
                 //preferences have never been saved, so push
-                console.log("no preferences yet, so new db push");
+                //console.log("no preferences yet, so new db push");
 
                 var userPref = {
                     userId: currentUserId,
@@ -110,7 +110,7 @@
                     tempMax: tempMax
                 };
 
-                $("#greeting").text("Yo " + userName);
+                $("#greeting").text("Hello " + userName);
 
 
                 database.ref("preferences").push(userPref);
@@ -123,7 +123,7 @@
 
                 $("#preferences").slideToggle(500, "swing", function () {
                 });
-                console.log('key', snapshot.key);
+                //console.log('key', snapshot.key);
             }
 
         });
@@ -154,7 +154,7 @@
         if ($(this).attr("value") === "false") {
             $(this).removeClass("far").addClass("fas").attr("value", "true");
 
-            console.log("ADDING FAVE ID: " + mtnId);
+            //console.log("ADDING FAVE ID: " + mtnId);
             if (currentUserId) {
                 database.ref("mtns").push({
                     name: mtnId,
@@ -168,7 +168,7 @@
 
             $(this).removeClass("fas").addClass("far").attr("value", "false");
 
-            console.log("REMOVING FAVE ID: " + mtnId);
+            //console.log("REMOVING FAVE ID: " + mtnId);
             if (currentUserId) {
                 database.ref('mtns').orderByChild("name").equalTo(mtnId).once('value', function (snapshot) {
                     //snapshot would have list of NODES that satisfies the condition
@@ -251,7 +251,7 @@
     // This is called when a user logs in, logs out, signs up?
     // ==============================================================//
     firebase.auth().onAuthStateChanged(firebaseUser => {
-        console.log(firebaseUser)
+        //console.log(firebaseUser)
         if (firebaseUser) {
             //user is logged in
             console.log(firebaseUser.uid);
@@ -260,12 +260,12 @@
             $('#loggedIn').show();
             $('#preferences').hide();
             $("#show-preferences").addClass("fa-plus-square");
-            $("#greeting").text("Hola");
+            $("#greeting").text("Hello");
             displayUserPreferences(firebaseUser.uid);
 
         } else {
             //No user is signed in
-            console.log("====================================Not logged in");
+            //console.log("====================================Not logged in");
             $('#login').show();
             $('#loggedIn').hide();
             $('#preferences').hide();
@@ -275,7 +275,7 @@
 
     function displayUserPreferences(uid) {
         //The User is Signed In
-        console.log('displayUserPreferences', uid);
+        //console.log('displayUserPreferences', uid);
         $("#user-name-input").val('');
         $("#wind-input").val('');
         $("#precipitation-input").val('');
@@ -283,13 +283,13 @@
         $("#temperature-max-input").val('');
 
         database.ref('preferences').orderByChild("userId").equalTo(uid).once('value', function (snapshot) {
-            console.log(snapshot.val());
-            console.log("snapshot.numChildren()", snapshot.numChildren());
+           // console.log(snapshot.val());
+           // console.log("snapshot.numChildren()", snapshot.numChildren());
 
             if (snapshot && snapshot.numChildren() > 0) {
 
                 snapshot.forEach(function (childSnapshot) {
-                    console.log("INSIDE SNAPSHOT " + childSnapshot.val().userName);
+                    //console.log("INSIDE SNAPSHOT " + childSnapshot.val().userName);
                     if (childSnapshot.val()
                         && childSnapshot.val().userName != null
                         && childSnapshot.val().userName != '') {
@@ -303,7 +303,7 @@
                     $('#preferences').attr('data-id', childSnapshot.key);
                 });
             } else {
-                console.log('A user is signed in, but has never saved preferences');
+                //console.log('A user is signed in, but has never saved preferences');
                 //$('#preferences').attr('data-id', snapshot.key);
             }
         });
@@ -315,13 +315,13 @@
             //console.log(snapshot.val())
             snapshot.forEach(function (childSnapshot) {
                 var favMtnIcons = $(".favorite");
-                console.log(childSnapshot);
+                //console.log(childSnapshot);
                 //this will be the Object Key Unique Id Value 
                 var key = childSnapshot.key;
                 //this is the data
                 var childData = childSnapshot.val();
                 //console.log("KEY: " + key);
-                console.log(childData.name);
+                //console.log(childData.name);
                 for (var i = 0; i < favMtnIcons.length; i++) {
                     var mtnId = $(favMtnIcons[i]).closest('table').attr("id");
                     if (mtnId === childData.name) {
