@@ -169,7 +169,7 @@ var mapsInfo = [{
         });
 
 
-    };
+    
 
 
 
@@ -265,7 +265,7 @@ var mapsInfo = [{
         });
     });
 
-});
+
 
 
 var times = [];
@@ -300,7 +300,7 @@ var times = [];
         console.log(times);
         
     });
-    };
+    
 
 
 
