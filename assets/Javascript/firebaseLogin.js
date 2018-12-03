@@ -71,22 +71,24 @@
         var preferencesKey = $('#preferences').attr('data-id');
 
         database.ref('preferences').orderByChild("userId").equalTo(currentUserId).once('value', function (snapshot) {
-            //there should only be one set if it exists
-            console.log("Preferences Snapshot");
-            console.log(snapshot.length);
-            if (snapshot && snapshot.length > 0) {
-                console.log("Snapshot is greater than 0");
+            //there should only be one record if results exist
+
+            if (snapshot && snapshot.numChildren() > 0) {
+                console.log("UPDATING A USER PREFERENCES RECORD");
                 //we have a key, so use the key to update
-                database.ref("preferences")
-                    .child(snapshot.key).update(
-                        {
-                            userId: currentUserId,
-                            userName: userName,
-                            windLimit: windLimit,
-                            precipLimit: precipLimit,
-                            tempMin: tempMin,
-                            tempMax: tempMax
-                        });
+                snapshot.forEach(function (childSnapshot) {
+
+                    database.ref("preferences")
+                        .child(childSnapshot.key).update(
+                            {
+                                userId: currentUserId,
+                                userName: userName,
+                                windLimit: windLimit,
+                                precipLimit: precipLimit,
+                                tempMin: tempMin,
+                                tempMax: tempMax
+                            });
+                });
             } else {
                 //preferences have never been saved, so push
                 console.log("no preferences yet, so new db push");
@@ -102,6 +104,15 @@
 
 
                 database.ref("preferences").push(userPref);
+                //How do I let the user know that the update has been successful?
+                if ($('#show-preferences').hasClass("fa-plus-square")) {
+                    $('#show-preferences').removeClass("fa-plus-square")
+                } else {
+                    $('#show-preferences').addClass("fa-plus-square");
+                }
+
+                $("#preferences").slideToggle(500, "swing", function () {
+                });
                 console.log('key', snapshot.key);
             }
 
@@ -218,7 +229,7 @@
     // ==============================================================//
     btnLogout.addEventListener('click', e => {
         firebase.auth().signOut();
-        
+
         //@TODO 
         // What happens to the mountain tables when a user log out
         // No Preferences
@@ -249,6 +260,7 @@
         }
     });
 
+
     function displayUserPreferences(uid) {
         //The User is Signed In
         console.log('displayUserPreferences', uid);
@@ -274,7 +286,7 @@
                     $('#preferences').attr('data-id', childSnapshot.key);
                 });
             } else {
-                consoloe.log('A user is signed in, but has never saved preferences');
+                console.log('A user is signed in, but has never saved preferences');
                 //$('#preferences').attr('data-id', snapshot.key);
             }
         });

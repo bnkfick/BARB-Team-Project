@@ -50,9 +50,8 @@
             display: none;
         }
         #preferences {
-            width: 30%;
-            float: right;
             clear: both;
+            text-align: left;
             background-color: #eee;
             border: solid 1px darkslateblue;
             padding: 10px;
@@ -93,29 +92,22 @@
                 <div id="preferences" data-id=''>
                     <!-- Entry Form -->
                     <form>
-                        <div class="form-group">
-                            <label for="user-name-input">Name</label>
-                            <input class="form-control" id="user-name-input" placeholder="Jane Doe" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="wind-input">Wind Speed Below</label>
-                            <input class="form-control" id="wind-input" placeholder="10" type="number">
-                        </div>
+                        <label for="user-name-input">Name</label>
+                        <input class="form-control" id="user-name-input" placeholder="Jane Doe" type="text">
 
-                        <div class="form-group">
-                            <label for="precipitation-input">% Chance of Precipitation Below</label>
-                            <input class="form-control" id="precipitation-input" placeholder="20" type="text">
-                        </div>
+                        <label for="wind-input">Wind Speed Below</label>
+                        <input class="form-control" id="wind-input" placeholder="10" type="number">
 
-                        <div class="form-group">
-                            <label for="temperature-min-input">Temperature Min</label>
-                            <input class="form-control" id="temperature-min-input" placeholder="20" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="temperature-max-input">Temperature Max</label>
-                            <input class="form-control" id="temperature-max-input" placeholder="90" type="text">
-                        </div>
-                        <button class="btn btn-primary float-right" id="user-preferences-btn">Submit</button>
+                        <label for="precipitation-input">% Chance of Precipitation Below</label>
+                        <input class="form-control" id="precipitation-input" placeholder="20" type="text">
+
+                        <label for="temperature-min-input">Temperature Min</label>
+                        <input class="form-control" id="temperature-min-input" placeholder="20" type="text">
+
+                        <label for="temperature-max-input">Temperature Max</label>
+                        <input class="form-control" id="temperature-max-input" placeholder="90" type="text">
+
+                        <button class="btn btn-primary float-right" id="user-preferences-btn">Save</button>
                     </form>
                 </div>
             </div>
