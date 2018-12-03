@@ -39,8 +39,8 @@ $(function () {
         {
             rank: 9,
             peakName: "Gray's Peak",
-            peakLocation: "39.660789,-105.784648",
             elevation: 14270,
+            peakLocation: "39.660789,-105.784648",
             weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"],
             trails: [
                 {
@@ -69,6 +69,7 @@ $(function () {
             rank: 11, 
             peakName: "Torrey's Peak",
             elevation: 14267,
+            peakLocation:"39.6427647,-105.8213982",
             weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"],
             trails: [
                 {
@@ -90,6 +91,25 @@ $(function () {
                     gain: 4500,
                     difficulty: 4,
                     exposure: 3,
+                },
+            ],
+        },
+        {
+            rank: 14, 
+            peakName: "Mount Evans",
+            elevation: 14264,
+            peakLocation: "39.64877532942564,-105.8205323984709",
+            weatherLink: ["https://api.weather.gov/gridpoints/PUB/40,106/forecast"],
+            trails: [
+                {
+                    routeID: 141,
+                    routeName: "West Ridge From Summit Lake",
+                    routeMapEmbed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d18464.250286895884!2d-105.8205323984709!3d39.64877532942564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x876a5332f585304f%3A0xa954806de5d605fd!2sGrays+And+Torreys+Trailhead%2C+3025+Stevens+Gulch+Rd%2C+Silver+Plume%2C+CO+80476!3m2!1d39.6607948!2d-105.78464729999999!4m5!1s0x876a5373a0c13d2f%3A0x8b1a1aefcab5da3f!2sTorreys+Peak%2C+Colorado!3m2!1d39.6427647!2d-105.82139819999999!5e1!3m2!1sen!2sus!4v1543523745630",
+                    trailHeadLocation: "39.598561,-105.640617",
+                    mileage: 5.8,
+                    gain: 2000,
+                    difficulty: 2,
+                    exposure: 2,
                 },
             ],
         },
