@@ -73,17 +73,7 @@ $(function () {
             //Main Mountain table
             
             var windConditions = $newMtnTable.find("#conditions").attr("id", "mtn-" + this.rank + "-conditions");
-            var windSpeed = $newMtnTable.find(".windspeed").text();
-            console.log(windSpeed)
             
-            if (windSpeed > 75) {
-                windConditions.css("background-color", "rgba(191, 78, 63, 0.6)")
-            } else if ( (windSpeed < 75) && (windSpeed > 30) ) {
-                windConditions.css("background-color", "rgba(229, 238, 73, 0.6)")
-            } else {
-                windConditions.css("background-color", "rgba(63, 191, 63, 0.7)")
-            }
-            //Write weather condition if statement here to change BG Color
             $newMtnTable.find(".rank").text(this.rank);
             $newMtnTable.find(".name").text(this.peakName);
             $newMtnTable.find(".elevation").text(this.elevation);
@@ -94,13 +84,15 @@ $(function () {
             // $newMtnTable.find(".temp").text(varTemp);
             $newMtnTable.find(".temp").attr("id", "mtn-" + this.rank + "-temp");
             target = this.rank;
-            getWindSpeed(i, target);
+            getWeatherConditions(i, target);
             i++;
+            
+            
             // $newMtnTable.find(".distance").text(varDist);
             
 
 
-
+            
             // $newMtnTable.find(".directions").text(varDirectionsLink);
             $newMtnTable.insertAfter($("#mtn-render"));
 
@@ -179,7 +171,7 @@ $(function () {
     };
     
     //Get Wind and Temperature
-    function getWindSpeed(i, target) {
+    function getWeatherConditions(i, target) {
         var times = [];
         $.ajax({
         url: peakInfo[i].weatherLink,
@@ -201,24 +193,44 @@ $(function () {
             };
             // return times[0].windSpeed;
             $("#mtn-" + (target) + "-wind").text(times[0].windSpeed);
-            $("#mtn-" + (target) + "-temp").text(times[0].temperature);
-            console.log(times[0].windSpeed);
-            console.log(times[0].temperature);
+            $("#mtn-" + (target) + "-temp").text(times[0].temperature + " F");
+            
+            //Conditional Formatting for Windspeed
+            var windSpeedString = times[0].windSpeed;
+            var windSpeedRange = windSpeedString.match(/\d+/g).map(Number);
+            //This returns array of low and high wind speeds
+            var windConditions = $("#mtn-" + (target) + "-wind") 
+
+            if (windSpeedRange[1] > 75) {
+                windConditions.css("background-color", "rgba(191, 78, 63, 0.6)")
+            } else if ( (windSpeedRange[0] > 30) && (windSpeedRange[1] <= 75 ) ) {
+                windConditions.css("background-color", "rgba(229, 238, 73, 0.6)")
+            } else {
+                windConditions.css("background-color", "rgba(63, 191, 63, 0.7)")
+            }
+
+            //Conditional Formatting for Temperature
+            var temp = times[0].temperature;
+
+            var tempConditions = $("#mtn-" + target + "-temp");
+
+            if (temp < 32) {
+                tempConditions.css("background-color", "rgba(63, 127, 191, 0.8)");
+            } else if ((temp > 32) && (temp < 60) ) {
+                tempConditions.css("background-color", "rgba(63, 191, 63, 0.7)");
+            } else {
+                tempConditions.css("background-color", "rgba(191, 78, 63, 0.6)");
+            }
+
         });
         
         
     };
     
-    // function renderWindSpeed() {
-    //     $.each(peakInfo, function (key, value) {
-            
-    //         $("#mtn-" + this.rank + "-wind").text(getWindSpeed(this));
-            
-    //     });
-    // };       
+          
     
 
-    //Toggle Routes View
+    //Toggle Routes View----------------------------------------
     $(".routes-table").hide();
     
     $("#table-list").on("click", "#plus-btn", function () {
