@@ -91,7 +91,7 @@ $(function () {
                     difficulty: 4,
                     exposure: 3,
                 },
-            ]
+            ],
         },
     ];
         
@@ -149,6 +149,7 @@ $(function () {
             // $newMtnTable.find(".temp").text(varTemp);
             target = this.rank;
             getDistance(i, target);
+            getWeatherConditions(i, target);
             i++;
             
             // Create unique IDs for weather TDs
@@ -157,9 +158,9 @@ $(function () {
             $newMtnTable.find(".wind-direction").attr("id", "mtn-" + this.rank + "-wind-direction");
             $newMtnTable.find(".short-forecast").attr("id", "mtn-" + this.rank + "-short-forecast");
 
-            target = this.rank;
-            getWeatherConditions(i, target);
-            i++;
+            // target = this.rank;
+          
+            // i++;
             
             
             // $newMtnTable.find(".distance").text(getDistance(i));
