@@ -422,9 +422,18 @@ $(function () {
 
             var shortForecastConditions = $("#mtn-" + (target) + "-short-forecast");
 
-            if (shortForecast === "Chance Snow Showers") {
-                shortForecastConditions.css('background-image', 'url("http://icons.iconarchive.com/icons/icons8/christmas-flat-color/256/snowflake-icon.png")')
-            } 
+            if ((shortForecast === "Chance Snow Showers") ||
+            (shortForecast === "Snow Showers Likely") ||
+            (shortForecast === "Snow Showers") ||
+            (shortForecast  === "Slight Chance Snow Showers") ||
+            (shortForecast === "Partly Cloudy then Slight Chance Snow Showers") ||
+                (shortForecast === "Mostly Cloudy then Chance Snow Showers") ||
+                (shortForecast  === "Isolated Snow Showers then Mostly Sunny")
+        ) {
+            shortForecastConditions.css('background-image', 'url("http://icons.iconarchive.com/icons/icons8/christmas-flat-color/256/snowflake-icon.png")')
+        } else {
+            shortForecastConditions.text(shortForecast);
+        }
         });
         
         
