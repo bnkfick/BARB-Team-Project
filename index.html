@@ -41,6 +41,7 @@
         <div class="container">
             <div class="user-box">
                 <!--Shows on load-->
+                
                 <div id="login">
                     <form>
                         <div class="row">
@@ -56,18 +57,23 @@
                             </div>
                         </div>
                         <div class="row">
-                                <div class="col">
-                                    <input id="txtEmail" class="form-control" type="email" placeholder="Email">
-                                </div>
-                                <div class="col">
-                                    <input id="txtPassword" class="form-control" type="password" placeholder="Password">
-                                </div>
-                                <div class="col-sm-2">
-                                    <button id="btnLogin" class="btn btn-primary btn-action">Log In</button>
-                                </div>
-                                <div class="col-sm-2">
-                                    <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-                                </div>
+                            <div class="col-md-4 offset-4">
+                                <div class="msgDiv"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input id="txtEmail" class="form-control" type="email" placeholder="Email">
+                            </div>
+                            <div class="col">
+                                <input id="txtPassword" class="form-control" type="password" placeholder="Password">
+                            </div>
+                            <div class="col-sm-2">
+                                <button id="btnLogin" class="btn btn-primary btn-action">Log In</button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -85,12 +91,9 @@
 
                     
                     <div class="row">
-                        <div class="col-sm-3 align-middle">
-                            <p class="msgDiv">Hello <span id="updateMsg">Climber</span></p>
+                        <div class="col-sm-5 align-middle">
+                            <p id="updateMsg"></p>
                         </div>
-                        <div class="col-sm-2 align-middle">
-                                
-                            </div>
                         
                         <div id="pref-btn-div" class="col-sm-5 align-middle">
                             <p>Click to Show or Hide Preferences:</p><i role="button" id="show-preferences" class="fas fa-plus-square fa-minus-square fa-2x"></i>
@@ -104,6 +107,7 @@
 
                 <!--Hidden Until Signed In-->
                 <div id="preferences" class="clearfix" data-id=''>
+                    
                     <form>
                         <div class="row">
                             <!--Left Column-->

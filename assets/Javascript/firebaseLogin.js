@@ -267,7 +267,7 @@
             //No user is signed in
             //console.log("====================================Not logged in");
             $('#login').show();
-            $('#loggedIn').hide();
+            // $('#loggedIn').hide();
             $('#preferences').hide();
         }
     });
