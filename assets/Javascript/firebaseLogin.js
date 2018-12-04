@@ -260,7 +260,7 @@
             $('#loggedIn').show();
             $('#preferences').hide();
             $("#show-preferences").addClass("fa-plus-square");
-            $("#greeting").text("Hello");
+            $("#greeting").show();
             displayUserPreferences(firebaseUser.uid);
 
         } else {
@@ -371,4 +371,6 @@
     //firebaseUser if logged in
     //null if logged out
     //auth.onAuthStateChanged(firebaseUser => { });
+    
+
 }());
