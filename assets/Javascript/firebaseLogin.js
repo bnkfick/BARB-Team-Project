@@ -260,14 +260,14 @@
             $('#loggedIn').show();
             $('#preferences').hide();
             $("#show-preferences").addClass("fa-plus-square");
-            $("#greeting").text("Hello");
+            $("#greeting").show();
             displayUserPreferences(firebaseUser.uid);
 
         } else {
             //No user is signed in
             //console.log("====================================Not logged in");
             $('#login').show();
-            $('#loggedIn').hide();
+            // $('#loggedIn').hide();
             $('#preferences').hide();
         }
     });
@@ -371,4 +371,6 @@
     //firebaseUser if logged in
     //null if logged out
     //auth.onAuthStateChanged(firebaseUser => { });
+    
+
 }());
