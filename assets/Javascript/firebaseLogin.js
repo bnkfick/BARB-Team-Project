@@ -293,7 +293,7 @@
                     if (childSnapshot.val()
                         && childSnapshot.val().userName != null
                         && childSnapshot.val().userName != '') {
-                        $("#greeting").text("hello " + childSnapshot.val().userName);
+                        $("#greeting").text("Hello " + childSnapshot.val().userName);
                     }
                     $("#user-name-input").val(childSnapshot.val().userName);
                     $("#wind-input").val(childSnapshot.val().windLimit);
