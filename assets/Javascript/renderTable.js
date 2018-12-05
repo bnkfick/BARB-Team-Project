@@ -4,7 +4,7 @@ $(function () {
     //     // connectWith: ".connectedSortable"
     // }).disableSelection();
 
-    
+
 
     var peakInfo = [
         {
@@ -66,10 +66,10 @@ $(function () {
             ],
         },
         {
-            rank: 11, 
+            rank: 11,
             peakName: "Torrey's Peak",
             elevation: 14267,
-            peakLocation:"39.6427647,-105.82139819999999",
+            peakLocation: "39.6427647,-105.82139819999999",
             weatherLink: ["https://api.weather.gov/gridpoints/BOU/33,58/forecast"],
             trails: [
                 {
@@ -95,7 +95,7 @@ $(function () {
             ],
         },
         {
-            rank: 14, 
+            rank: 14,
             peakName: "Mount Evans",
             elevation: 14264,
             peakLocation: "39.588300499999995,-105.64382859999999",
@@ -114,7 +114,7 @@ $(function () {
             ],
         },
         {
-            rank: 15, 
+            rank: 15,
             peakName: "Long's Peak",
             elevation: 14255,
             peakLocation: "40.254875299999995,-105.6160295",
@@ -133,7 +133,7 @@ $(function () {
             ],
         },
         {
-            rank: 30, 
+            rank: 30,
             peakName: "Pikes Peak",
             elevation: 14110,
             peakLocation: "38.840925,-105.042035",
@@ -152,7 +152,7 @@ $(function () {
             ],
         },
         {
-            rank: 38, 
+            rank: 38,
             peakName: "Mount Bierstadt",
             elevation: 14060,
             peakLocation: "39.5827653,-105.6686151",
@@ -171,7 +171,7 @@ $(function () {
             ],
         },
         {
-            rank: 2, 
+            rank: 2,
             peakName: "Mount Massive",
             elevation: 14421,
             peakLocation: "39.1872118,-106.47530599999999",
@@ -190,7 +190,7 @@ $(function () {
             ],
         },
         {
-            rank: 5, 
+            rank: 5,
             peakName: "La Plata Peak",
             elevation: 14336,
             peakLocation: "39.0294368!2d-106.4730831",
@@ -208,56 +208,68 @@ $(function () {
                 },
             ],
         },
-        
+
     ];
-        
+
     var aK = "AIzaSyC7lOHjdHyf_NrgsyZfqzrgue8qiiTdu2s";
     var meters = 0;
     var distance;
 
-    function getDistance(i, target){
+    function getDistance(i, target) {
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination="+ peakInfo[i].peakLocation+"&key="+aK,
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=Denver,CO&destination=" + peakInfo[i].peakLocation + "&key=" + aK,
             method: "GET"
-        }) .then(function(response){
+        }).then(function (response) {
             console.log(response);
             //For now if more than one route is listed we will simply go with the first. It will make the logic to write the loop more manageable. 
             //I also don't feel that all our our info is accurate.
             meters = 0;
-            if(response.status === "ZERO_RESULTS"){
+            if (response.status === "ZERO_RESULTS") {
                 distance = "Road Closed for Winter";
             } else {
-            for(n = 0; n < response.routes[0].legs.length; n++);
-            meters += parseFloat(response.routes[0].legs[0].distance.value);
-            // console.log(meters);
+                for (n = 0; n < response.routes[0].legs.length; n++);
+                meters += parseFloat(response.routes[0].legs[0].distance.value);
+                // console.log(meters);
             };
-            if(meters !== 0){
+            if (meters !== 0) {
                 distance = Math.round((meters * 3.281) / 5280);
                 console.log(distance + " miles");
                 console.log(target);
                 console.log(i);
-                $("#mtn-"+(target)+"-conditions .distance").text(distance + "mi");
+                $("#mtn-" + (target) + "-conditions .distance").text(distance + "mi");
             } else {
                 console.log(distance);
                 console.log(target);
                 console.log(i);
-                $("#mtn-"+(target)+"-conditions .distance").text(distance);
+                $("#mtn-" + (target) + "-conditions .distance").text(distance);
             };
-        
+
         });
     }
 
+    function compare(a, b) {
+        let comparison = 0;
+        if (a.rank > b.rank) {
+            comparison = -1;
+        } else if (a.rank < b.rank) {
+            comparison = 1;
+        }
+        return comparison;
+    }
+    var sortedPeakInfo = peakInfo;
+    sortedPeakInfo.sort(compare);
+    
     var i = 0;
     function renderMtnTables() {
-        $.each(peakInfo, function (key, value) {
+        $.each(sortedPeakInfo, function (key, value) {
             var $newMtnTable = $(".mtn-template").clone();
-            
+
             $newMtnTable.removeClass("mtn-template").attr("id", "mtn-" + this.rank);
-            
+
             //Main Mountain table
-            
+
             var windConditions = $newMtnTable.find("#conditions").attr("id", "mtn-" + this.rank + "-conditions");
-            
+
             $newMtnTable.find(".rank").text(this.rank);
             $newMtnTable.find(".name").text(this.peakName);
             $newMtnTable.find(".elevation").text(this.elevation);
@@ -267,7 +279,7 @@ $(function () {
             getDistance(i, target);
             getWeatherConditions(i, target);
             i++;
-            
+
             // Create unique IDs for weather TDs
             $newMtnTable.find(".windspeed").attr("id", "mtn-" + this.rank + "-wind");
             $newMtnTable.find(".temperature").attr("id", "mtn-" + this.rank + "-temperature");
@@ -275,30 +287,30 @@ $(function () {
             $newMtnTable.find(".short-forecast").attr("id", "mtn-" + this.rank + "-short-forecast");
 
             // target = this.rank;
-          
+
             // i++;
-            
-            
+
+
             // $newMtnTable.find(".distance").text(getDistance(i));
-            
 
 
-            
+
+
             // $newMtnTable.find(".directions").text(varDirectionsLink);
             $newMtnTable.insertAfter($("#mtn-render"));
 
             //Render Routes Sub-Tables--------
             $newMtnTable.find("#routes").attr("id", "mtn-" + this.rank + "-routes");
-            
-            $.each(this.trails, function (key,value) {
+
+            $.each(this.trails, function (key, value) {
                 var $newRouteTable = $(".route-template").clone();
-                
+
                 $newRouteTable.removeClass("route-template").attr("id", "route-" + this.routeID);
 
                 $newRouteTable.find(".route-name").text(this.routeName);
                 $newRouteTable.find(".route-mileage").text(this.mileage);
                 $newRouteTable.find(".route-gain").text(this.gain);
-                
+
                 //ROUTE DIFFICULTY 
                 var selectRouteDifficulty = $newRouteTable.find(".route-difficulty");
                 var difficulty = this.difficulty;
@@ -316,12 +328,12 @@ $(function () {
                 } else {
                     selectRouteDifficulty.append(easy);
                 }
-                
-                
+
+
                 //ROUTE EXPOSURE: 
                 var selectRouteExposure = $newRouteTable.find(".progress-bar");
                 var exposure = this.exposure;
-                
+
                 if (exposure === 4) {
                     selectRouteExposure.removeClass("bg-success").addClass("bg-danger").attr("style", "width: 100%").text("EXTREME");
                 } else if (exposure === 3) {
@@ -338,7 +350,7 @@ $(function () {
                 $newRouteTable.find("#route-x-beta").attr("id", "route-" + this.routeID + "-beta");
 
                 //appends routeMapEmbed
-                var routeMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder",0).attr("style","border:0").attr("src", this.routeMapEmbed);
+                var routeMap = $("<iframe>").attr("width", 600).attr("height", 450).attr("frameborder", 0).attr("style", "border:0").attr("src", this.routeMapEmbed);
                 $newRouteTable.find(".routeMapEmbed").append(routeMap);
 
                 //appends trailHead map
@@ -350,26 +362,26 @@ $(function () {
 
                 //Create route description in object and code here
 
-                
+
 
                 $newRouteTable.insertAfter($("#route-render"));
             });
-                        
-           
+
+
         });
-            
+
 
     };
-    
+
     //Get Wind and Temperature
     function getWeatherConditions(i, target) {
         var times = [];
         $.ajax({
-        url: peakInfo[i].weatherLink,
-        method: "GET"
-    
-        }).then(function(response){
-        // console.log(response);
+            url: peakInfo[i].weatherLink,
+            method: "GET"
+
+        }).then(function (response) {
+            // console.log(response);
             for (var n = 0; n < 6; n++) {
                 times.push({
                     number: response.properties.periods[n].number,
@@ -380,7 +392,7 @@ $(function () {
                     shortForecast: response.properties.periods[n].shortForecast,
                     detailedForecast: response.properties.periods[n].detailedForecast
                 });
-            
+
             };
             console.log(times[0]);
 
@@ -389,16 +401,16 @@ $(function () {
             $("#mtn-" + (target) + "-temperature").text(times[0].temperature + " F");
             $("#mtn-" + (target) + "-wind-direction").text(times[0].windDirection);
             // $("#mtn-" + (target) + "-short-forecast").text(times[0].shortForecast);
-            
+
             //Conditional Formatting for Windspeed
             var windSpeedString = times[0].windSpeed;
             var windSpeedRange = windSpeedString.match(/\d+/g).map(Number);
             //This returns array of low and high wind speeds
-            var windConditions = $("#mtn-" + (target) + "-wind") 
+            var windConditions = $("#mtn-" + (target) + "-wind")
 
             if (windSpeedRange[1] > 75) {
                 windConditions.css("background-color", "rgba(191, 78, 63, 0.4)")
-            } else if ( (windSpeedRange[0] > 30) && (windSpeedRange[1] <= 75 ) ) {
+            } else if ((windSpeedRange[0] > 30) && (windSpeedRange[1] <= 75)) {
                 windConditions.css("background-color", "rgba(229, 238, 73, 0.4)")
             } else {
                 windConditions.css("background-color", "rgba(63, 191, 63, 0.4)")
@@ -411,7 +423,7 @@ $(function () {
 
             if (temp < 32) {
                 tempConditions.css("background-color", "rgb(30, 201, 255, 0.4)");
-            } else if ((temp > 32) && (temp < 60) ) {
+            } else if ((temp > 32) && (temp < 60)) {
                 tempConditions.css("background-color", "rgba(63, 191, 63, 0.4)");
             } else {
                 tempConditions.css("background-color", "rgba(191, 78, 63, 0.4)");
@@ -422,6 +434,11 @@ $(function () {
 
             var shortForecastConditions = $("#mtn-" + (target) + "-short-forecast");
 
+<<<<<<< HEAD
+            if (shortForecast === "Chance Snow Showers") {
+                shortForecastConditions.css('background-image', 'url("http://icons.iconarchive.com/icons/icons8/christmas-flat-color/256/snowflake-icon.png")')
+            }
+=======
             if ((shortForecast === "Chance Snow Showers") ||
             (shortForecast === "Snow Showers Likely") ||
             (shortForecast === "Snow Showers") ||
@@ -434,17 +451,18 @@ $(function () {
         } else {
             shortForecastConditions.text(shortForecast);
         }
+>>>>>>> master
         });
-        
-        
+
+
     };
-    
-          
-    
+
+
+
 
     //Toggle Routes View----------------------------------------
     $(".routes-table").hide();
-    
+
     $("#table-list").on("click", "#plus-btn", function () {
         if ($(this).hasClass("fa-plus-square")) {
             $(this).removeClass("fa-plus-square")
@@ -455,7 +473,7 @@ $(function () {
         var mtnID = $(this).parent().parent().parent().parent().attr("id")
         console.log(mtnID);
 
-        $("#" + mtnID + "-routes").slideToggle(500, "swing", function () { 
+        $("#" + mtnID + "-routes").slideToggle(500, "swing", function () {
         });
     });
 
@@ -470,8 +488,8 @@ $(function () {
         }
         var routeID = $(this).parent().parent().parent().parent().attr("id");
         console.log(routeID)
-        
-        $("#"+routeID + "-beta").slideToggle(500, "swing", function () {  
+
+        $("#" + routeID + "-beta").slideToggle(500, "swing", function () {
         });
     });
 
@@ -487,7 +505,7 @@ $(function () {
 
 
 
-    
+
 
 
 

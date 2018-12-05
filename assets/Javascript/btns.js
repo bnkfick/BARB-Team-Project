@@ -115,12 +115,12 @@ $("#preferences").on("click", "#rank-filter-btn", function () {
 
         /*Loop through all tables (except the
         first, which contains table template):*/
-        for (var i = 1; i < allTables.length; i++) {
+        for (var i = 1; i < allTables.length-1; i++) {
             console.log(i);
-            // //start by saying there should be no switching:
-            // shouldSwitch = false;
-            // /*Get the two elements you want to compare,
-            // one from current row and one from the next:*/
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
             
             mtnIdx = $(allTables[i]).attr("id");
             mtnIdy = $(allTables[i + 1]).attr("id");
@@ -128,12 +128,13 @@ $("#preferences").on("click", "#rank-filter-btn", function () {
             mtnIdPartsY = mtnIdy.split('-');
             x= mtnIdPartsX[1];
             y= mtnIdPartsY[1];
-            // //check if the two rows should switch place:
-            // if (x > y) {
-            //     //if so, mark as a switch and break the loop:
-            //     shouldSwitch = true;
-            //     break;
-            // }
+            console.log("allTables[i].parentNode", allTables[i].parentNode);
+            //check if the two rows should switch place:
+             if (x > y) {
+                 //if so, mark as a switch and break the loop:
+                 shouldSwitch = true;
+                 break;
+             }
         }
         if (shouldSwitch) {
             /*If a switch has been marked, make the switch
